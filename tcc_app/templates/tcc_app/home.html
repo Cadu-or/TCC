@@ -4,9 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <title>HomePage</title>
-    <link rel="stylesheet" href="{% static 'tcc_app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/tcc_app/reset.css' %}">
+    <link rel="stylesheet" href="{% static '/tcc_app/style.css' %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
-<h1>TCC</h1>
+<body>
+    <header>
+        <h1>TCC</h1>
+    </header>
+    <div class="conteudo">
+        <div class="text">
+            <p>
+                Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos, 
+                sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, Stonks é uma ferramenta valiosa 
+                para qualquer pessoa interessada em compreender melhor a realidade do Brasil e seus indicadores econômicos, sociais e 
+                ambientais. Seja para fins acadêmicos, profissionais ou simplesmente por curiosidade.
+            </p>
+            <p>
+                Os indicadores utilizados foram retirados do site Ipeadata, uma plataforma mantida pelo Instituto de Pesquisa Econômica Aplicada (IPEA), que 
+                disponibiliza uma grande quantidade de informações relacionadas à economia, sociedade e meio ambiente do Brasil. Com 
+                acesso a dados atualizados sobre inflação, crescimento econômico, desemprego, saúde, educação, meio ambiente e entre outros,
+                o Ipeadata oferece uma visão abrangente e detalhada sobre a realidade do país.
+            </p>
+        </div>
+        <div class="meio">
+            <div class="esquerda">
+                <p>Selecione os indicadores:</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" class="btn btn-primary" value="enviar" />
+                </form>
+                <div id="graphDiv">
+                    {{ graph_html|safe }}
+                </div>
+            </div>
+            <div class="barra"> </div>
+            <div class="direita">
+            </div>
 
-<h3> Aqui vai ter uma aplicação do tcc do Cralo e do Joãozinho. </h3>
+        </div>
+        <h3> Aqui vai ter uma aplicação do tcc do Cralo e do Joãozinho. </h3>
+    </div>
+
+   
+</body>
