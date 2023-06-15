@@ -1,106 +1,106 @@
-CODE,DESCRICAO
-BM12_DEXGFN12,DLSP - dívida externa líquida - governo federal e Banco Central
-BM12_ERC12,Taxa de câmbio - R$ / US$ - comercial - compra - média
-BM12_ERCF12,Taxa de câmbio - R$ / US$ - comercial - compra - fim período
-BM12_ERV12,Taxa de câmbio - R$ / US$ - comercial - venda - média
-BM12_ERVF12,Taxa de câmbio - R$ / US$ - comercial - venda - fim período
-PAN12_ERV12,Taxa de câmbio nominal
-FUNCEX12_MVMAQINF2N12,"Importações - equipamentos de informática, eletrônicos e ópticos - (FOB)"
-FUNCEX12_MVVEIC2N12,"Importações - veículos automotores, reboques, carrocerias - (FOB)"
-FUNCEX12_XPB12,Exportações - produtos básicos - preços - índice (média 2018 = 100)
-FUNCEX12_XPT12,Exportações - preços - índice (média 2018 = 100)
-BPAG12_BCM12,Balanço de pagamentos - balança comercial - importações
-BPAG12_SERTRANS12,Balanço de pagamentos - serviços - transportes - saldo
-ELETRO12_CEETCOM12,Energia elétrica - consumo - comércio - tarifa média por MWh
-ELETRO12_CEETIND12,Energia elétrica - consumo - indústria - tarifa média por MWh
-ELETRO12_CEETT12,Energia elétrica - consumo - tarifa média por MWh
-BM12_DINGFN12,DLSP - dívida interna líquida - governo federal e Banco Central
-ABATE12_ABPESU12,Abate - suínos - peso das carcaças
-ABATE12_ABQUSU12,Abate - suínos - quantidade
-ANP12_CALCO12,Consumo aparente - álcool carburante - média - quantidade/dia
-ANP12_CDEPET12,Consumo aparente - derivados de petróleo - média - quantidade/dia
-ELETRO12_CEECOM12,Energia elétrica - consumo - comércio - quantidade
-ELETRO12_CEEIND12,Energia elétrica - consumo - indústria - quantidade
-ELETRO12_CEEOUT12,Energia elétrica - consumo - outros setores - quantidade
-ELETRO12_CEERES12,Energia elétrica - consumo - residência - quantidade
-ELETRO12_CEET12,Energia elétrica - consumo -  quantidade
-FUNCEX12_MDPT12,Importações - preços - índice (média 2018 = 100)
-FUNCEX12_MDQT12,Importações - quantum - índice (média 2018 = 100)
-FUNCEX12_MPAGP2N12,Importações - agricultura e pecuária - preços - índice (média 2018 = 100)
-FUNCEX12_MPAL2N12,Importações - produtos alimentícios - preços - índice (média 2018 = 100)
-FUNCEX12_MPBEB2N12,Importações - bebidas - preços - índice (média 2018 = 100)
-FUNCEX12_MPCAL2N12,"Importações - couros, artefatos de couro e calçados - preços - índice (média 2018 = 100)"
-FUNCEX12_MPDIV2N12,Importações - indústrias diversas - preços - índice (média 2018 = 100)
-FUNCEX12_MPEMM2N12,Importações - extração de minerais metálicos - preços - índice (média 2018 = 100)
-FUNCEX12_MPMAD2N12,Importações - produtos de madeira - preços - índice (média 2018 = 100)
-FUNCEX12_MPMETBAS2N12,Importações - metalurgia - preços - índice (média 2018 = 100)
-FUNCEX12_MPPAP2N12,"Importações - celulose, papel e produtos de papel - preços - índice (média 2018 = 100)"
-FUNCEX12_MPPLAS2N12,Importações - produtos de borracha e material plástico - preços - índice (média 2018 = 100)
-FUNCEX12_MPQUIM2N12,Importações - produtos químicos - preços - índice (média 2018 = 100)
-FUNCEX12_MPVEST2N12,Importações - artigos de vestuário e acessórios - preços - índice (média 2018 = 100)
-FUNCEX12_MQDIV2N12,Importações - indústrias diversas - quantum - índice (média 2018 = 100)
-FUNCEX12_MQFARM2N12,Importações - produtos farmoquímicos farmacêuticos - quantum - índice (média 2018 = 100)
-FUNCEX12_MQMAQELET2N12,"Importações - máquinas, aparelhos e materiais elétricos - quantum - índice (média 2018 = 100)"
-FUNCEX12_MQMAQEQU2N12,Importações - máquinas e equipamentos - quantum - índice (média 2018 = 100)
-FUNCEX12_MQMET2N12,Importações - produtos de metal - quantum - índice (média 2018 = 100)
-FUNCEX12_MQMNM2N12,Importações - produtos de minerais não-metálicos - quantum - índice (média 2018 = 100)
-FUNCEX12_MQPES2N12,Importações - pesca e aqüicultura - quantum - índice (média 2018 = 100)
-FUNCEX12_MQPLAS2N12,Importações - produtos de borracha e material plástico - quantum - índice (média 2018 = 100)
-FUNCEX12_MQTEXT2N12,Importações - produtos têxteis - quantum - índice (média 2018 = 100)
-FUNCEX12_MVAL2N12,Importações - produtos alimentícios - (FOB)
-FUNCEX12_MVDIV2N12,Importações - indústrias diversas - (FOB)
-FUNCEX12_MVFARM2N12,Importações - produtos farmoquímicos farmacêuticos - (FOB)
-FUNCEX12_MVMAQELET2N12,"Importações - máquinas, aparelhos e materiais elétricos - (FOB)"
-FUNCEX12_MVMAQEQU2N12,Importações - máquinas e equipamentos - (FOB)
-FUNCEX12_MVMET2N12,Importações - produtos de metal - (FOB)
-FUNCEX12_MVMETBAS2N12,Importações - metalurgia - (FOB)
-FUNCEX12_MVMNM2N12,Importações - produtos de minerais não-metálicos - (FOB)
-FUNCEX12_MVMOV2N12,Importações - móveis - (FOB)
-FUNCEX12_MVPES2N12,Importações - pesca e aqüicultura - (FOB)
-FUNCEX12_MVPLAS2N12,Importações - produtos de borracha e material plástico - (FOB)
-FUNCEX12_MVQUIM2N12,Importações - produtos químicos - (FOB)
-FUNCEX12_MVTEXT2N12,Importações - produtos têxteis - (FOB)
-FUNCEX12_TTR12,Termos de troca - índice (média 2018 = 100)
-FUNCEX12_XPAGP2N12,Exportações - agricultura e pecuária - preços - índice (média 2018 = 100)
-FUNCEX12_XPEPET2N12,Exportações - extração de petróleo e gás natural - preços - índice (média 2018 = 100)
-FUNCEX12_XPM12,Exportações - produtos manufaturados - preços - índice (média 2018 = 100)
-FUNCEX12_XPMAQEQU2N12,Exportações - máquinas e equipamentos - preços - índice (média 2018 = 100)
-FUNCEX12_XPPETCOMB2N12,Exportações - derivados do petróleo - preços - índice (média 2018 = 100)
-FUNCEX12_XPS12,Exportações - produtos semi-manufaturados - preços - índice (média 2018 = 100)
-FUNCEX12_XQFARM2N12,Exportações - produtos farmoquímicos farmacêuticos - quantum - índice (média 2018 = 100)
-FUNCEX12_XQPAP2N12,"Exportações - celulose, papel e produtos de papel - quantum - índice (média 2018 = 100)"
-FUNCEX12_XVAL2N12,Exportações - produtos alimentícios - (FOB)
-FUNCEX12_XVFARM2N12,Exportações - produtos farmoquímicos farmacêuticos - (FOB)
-BPAG12_BCX12,Balanço de pagamentos - balança comercial - exportações
-IFS12_MAIZE12,Commodities - milho - cotação internacional
-IFS12_SOJAF12,Commodities - soja em farelo - cotação internacional
-IFS12_SOJAGP12,Commodities - soja em grão - cotação internacional
-PAN12_MTV12,Balança comercial - importações (BPM6)
-PAN12_XTV12,Balança comercial - exportações (BPM6)
-FUNCEX12_MQAL2N12,Importações - produtos alimentícios - quantum - índice (média 2018 = 100)
-FUNCEX12_MQMOV2N12,Importações - móveis - quantum - índice (média 2018 = 100)
-BPAG12_SEROUTROSD12,Balanço de pagamentos - serviços - outros serviços de negócio - despesa
-BPAG12_SERTRANSD12,Balanço de pagamentos - serviços - transportes - despesa
-IGP12_IPAA12,IPA-DI - origem - prod. agropecuários - índice (ago. 1994 = 100)
-BM12_DTGFN12,DSLP - total - governo federal e Banco Central
-IGP12_IGPOG12,IGP-OG - geral - índice (ago. 1994 = 100)
-IGP12_IPAI12,IPA-DI - origem - prod. industriais - índice (ago. 1994 = 100)
-FUNCEX12_XVPAP2N12,"Exportações - celulose, papel e produtos de papel - (FOB)"
-IFS12_BEEFB12,Commodities - carne - cotação internacional
-FUNCEX12_MPEPET2N12,Importações - extração de petróleo e gás natural - preços - índice (média 2018 = 100)
-FUNCEX12_MPPETCOMB2N12,Importações - derivados do petróleo - preços - índice (média 2018 = 100)
-BPAG12_SERR12,Balanço de pagamentos - serviços - receita
-BPAG12_SEROUTROSR12,Balanço de pagamentos - serviços - outros serviços de negócio - receita
-BPAG12_SERTRANSR12,Balanço de pagamentos - serviços - transportes - receita
-FUNCEX12_MPTEXT2N12,Importações - produtos têxteis - preços - índice (média 2018 = 100)
-FUNCEX12_XVEMM2N12,Exportações - extração de minerais metálicos - (FOB)
-FUNCEX12_XPAL2N12,Exportações - produtos alimentícios - preços - índice (média 2018 = 100)
-FUNCEX12_XPTEXT2N12,Exportações - produtos têxteis - preços - índice (média 2018 = 100)
-FUNCEX12_XPQUIM2N12,Exportações - produtos químicos - preços - índice (média 2018 = 100)
-IFS12_SOJAOP12,Commodities - óleo de soja - cotação internacional
-BPAG12_SERTELR12,"Balanço de pagamentos - serviços - telecomunicação, computação e informações - receita"
-FUNCEX12_XQB12,Exportações - produtos básicos - quantum - índice (média 2018 = 100)
-FUNCEX12_XVPLAS2N12,Exportações - produtos de borracha e material plástico - (FOB)
-FUNCEX12_XVQUIM2N12,Exportações - produtos químicos - (FOB)
-IGP12_IGPF12,IGP-DI - geral - centrado - fim período - índice (ago. 1994 = 100)
-IFS12_POULTRY12,Commodities - aves - cotação internacional
+CODE,DESCRICAO,GRANDE_TEMA,FONTE,MEDIDA
+FUNCEX12_XPB12,Exportações - produtos básicos - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPPLAS2N12,Importações - produtos de borracha e material plástico - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+ELETRO12_CEEOUT12,Energia elétrica - consumo - outros setores - quantidade,Macroeconômico,Eletrobras,GWh
+ABATE12_ABQUSU12,Abate - suínos - quantidade,Macroeconômico,"Instituto Brasileiro de Geografia e Estatística, Pesquisa Trimestral do Abate de Animais (IBGE/Coagro)",Cabeça
+FUNCEX12_MDPT12,Importações - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+ELETRO12_CEETCOM12,Energia elétrica - consumo - comércio - tarifa média por MWh,Macroeconômico,Eletrobras,R$
+ELETRO12_CEET12,Energia elétrica - consumo -  quantidade,Macroeconômico,Eletrobras,GWh
+FUNCEX12_XPM12,Exportações - produtos manufaturados - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+ELETRO12_CEERES12,Energia elétrica - consumo - residência - quantidade,Macroeconômico,Eletrobras,GWh
+FUNCEX12_MPAGP2N12,Importações - agricultura e pecuária - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPQUIM2N12,Importações - produtos químicos - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_XPT12,Exportações - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+ELETRO12_CEETIND12,Energia elétrica - consumo - indústria - tarifa média por MWh,Macroeconômico,Eletrobras,R$
+ABATE12_ABPESU12,Abate - suínos - peso das carcaças,Macroeconômico,"Instituto Brasileiro de Geografia e Estatística, Pesquisa Trimestral do Abate de Animais (IBGE/Coagro)",Tonelada
+ELETRO12_CEETT12,Energia elétrica - consumo - tarifa média por MWh,Macroeconômico,Eletrobras,R$
+BM12_DINGFN12,DLSP - dívida interna líquida - governo federal e Banco Central,Macroeconômico,"Banco Central do Brasil, Notas Econômico-financeiras para a Imprensa, Finanças Públicas (Bacen/Notas Imprensa/F. Púb)",R$
+FUNCEX12_MPBEB2N12,Importações - bebidas - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVMAQEQU2N12,Importações - máquinas e equipamentos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MPAL2N12,Importações - produtos alimentícios - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVMNM2N12,Importações - produtos de minerais não-metálicos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XPS12,Exportações - produtos semi-manufaturados - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVVEIC2N12,"Importações - veículos automotores, reboques, carrocerias - (FOB)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XQPAP2N12,"Exportações - celulose, papel e produtos de papel - quantum - índice (média 2018 = 100)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_TTR12,Termos de troca - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVMAQINF2N12,"Importações - equipamentos de informática, eletrônicos e ópticos - (FOB)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MVPLAS2N12,Importações - produtos de borracha e material plástico - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MQDIV2N12,Importações - indústrias diversas - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPCAL2N12,"Importações - couros, artefatos de couro e calçados - preços - índice (média 2018 = 100)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVTEXT2N12,Importações - produtos têxteis - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+ANP12_CDEPET12,Consumo aparente - derivados de petróleo - média - quantidade/dia,Macroeconômico,Agência Nacional do Petróleo (ANP),Barril
+FUNCEX12_MVQUIM2N12,Importações - produtos químicos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MVAL2N12,Importações - produtos alimentícios - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MVDIV2N12,Importações - indústrias diversas - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+IFS12_SOJAF12,Commodities - soja em farelo - cotação internacional,Macroeconômico,"Fundo Monetário Internacional, International Financial Statistics (FMI/IFS)",US$
+FUNCEX12_MVMET2N12,Importações - produtos de metal - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+ELETRO12_CEEIND12,Energia elétrica - consumo - indústria - quantidade,Macroeconômico,Eletrobras,GWh
+FUNCEX12_XPAGP2N12,Exportações - agricultura e pecuária - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+ELETRO12_CEECOM12,Energia elétrica - consumo - comércio - quantidade,Macroeconômico,Eletrobras,GWh
+FUNCEX12_MQMNM2N12,Importações - produtos de minerais não-metálicos - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVPES2N12,Importações - pesca e aqüicultura - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XVFARM2N12,Exportações - produtos farmoquímicos farmacêuticos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MQPES2N12,Importações - pesca e aqüicultura - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MQPLAS2N12,Importações - produtos de borracha e material plástico - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVMETBAS2N12,Importações - metalurgia - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MQFARM2N12,Importações - produtos farmoquímicos farmacêuticos - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPMETBAS2N12,Importações - metalurgia - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+IFS12_MAIZE12,Commodities - milho - cotação internacional,Macroeconômico,"Fundo Monetário Internacional, International Financial Statistics (FMI/IFS)",US$
+FUNCEX12_MQMAQEQU2N12,Importações - máquinas e equipamentos - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MQTEXT2N12,Importações - produtos têxteis - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+ANP12_CALCO12,Consumo aparente - álcool carburante - média - quantidade/dia,Macroeconômico,Agência Nacional do Petróleo (ANP),Barril
+FUNCEX12_MDQT12,Importações - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+BPAG12_BCM12,Balanço de pagamentos - balança comercial - importações,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+BPAG12_BCX12,Balanço de pagamentos - balança comercial - exportações,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+PAN12_MTV12,Balança comercial - importações (BPM6),Macroeconômico,"Banco Central do Brasil, Notas Econômico-financeiras para a Imprensa, Setor Externo (Bacen/Notas Imprensa/Set. Ext)",US$
+FUNCEX12_MPMAD2N12,Importações - produtos de madeira - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVMOV2N12,Importações - móveis - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MQMET2N12,Importações - produtos de metal - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_XPEPET2N12,Exportações - extração de petróleo e gás natural - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPEMM2N12,Importações - extração de minerais metálicos - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPVEST2N12,Importações - artigos de vestuário e acessórios - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_XVAL2N12,Exportações - produtos alimentícios - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+IFS12_SOJAGP12,Commodities - soja em grão - cotação internacional,Macroeconômico,"Fundo Monetário Internacional, International Financial Statistics (FMI/IFS)",US$
+FUNCEX12_XQFARM2N12,Exportações - produtos farmoquímicos farmacêuticos - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVMAQELET2N12,"Importações - máquinas, aparelhos e materiais elétricos - (FOB)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XPMAQEQU2N12,Exportações - máquinas e equipamentos - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPPAP2N12,"Importações - celulose, papel e produtos de papel - preços - índice (média 2018 = 100)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MVFARM2N12,Importações - produtos farmoquímicos farmacêuticos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_MPDIV2N12,Importações - indústrias diversas - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MQMOV2N12,Importações - móveis - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_XPPETCOMB2N12,Exportações - derivados do petróleo - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MQAL2N12,Importações - produtos alimentícios - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+BPAG12_SEROUTROSD12,Balanço de pagamentos - serviços - outros serviços de negócio - despesa,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+PAN12_XTV12,Balança comercial - exportações (BPM6),Macroeconômico,"Banco Central do Brasil, Notas Econômico-financeiras para a Imprensa, Setor Externo (Bacen/Notas Imprensa/Set. Ext)",US$
+FUNCEX12_MQMAQELET2N12,"Importações - máquinas, aparelhos e materiais elétricos - quantum - índice (média 2018 = 100)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+BPAG12_SERTRANSD12,Balanço de pagamentos - serviços - transportes - despesa,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+BM12_ERC12,Taxa de câmbio - R$ / US$ - comercial - compra - média,Macroeconômico,"Banco Central do Brasil, Boletim, Seção Balanço de Pagamentos (Bacen / Boletim / BP)",R$
+BM12_ERV12,Taxa de câmbio - R$ / US$ - comercial - venda - média,Macroeconômico,"Banco Central do Brasil, Boletim, Seção Balanço de Pagamentos (Bacen / Boletim / BP)",R$
+PAN12_ERV12,Taxa de câmbio nominal,Macroeconômico,"Banco Central do Brasil, Boletim, Seção Balanço de Pagamentos (Bacen / Boletim / BP)",R$
+BM12_ERCF12,Taxa de câmbio - R$ / US$ - comercial - compra - fim período,Macroeconômico,"Banco Central do Brasil, Boletim, Seção Balanço de Pagamentos (Bacen / Boletim / BP)",R$
+BM12_ERVF12,Taxa de câmbio - R$ / US$ - comercial - venda - fim período,Macroeconômico,"Banco Central do Brasil, Boletim, Seção Balanço de Pagamentos (Bacen / Boletim / BP)",R$
+BM12_DEXGFN12,DLSP - dívida externa líquida - governo federal e Banco Central,Macroeconômico,"Banco Central do Brasil, Notas Econômico-financeiras para a Imprensa, Finanças Públicas (Bacen/Notas Imprensa/F. Púb)",R$
+BPAG12_SERTRANS12,Balanço de pagamentos - serviços - transportes - saldo,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+IGP12_IPAI12,IPA-DI - origem - prod. industriais - índice (ago. 1994 = 100),Macroeconômico,"Fundação Getulio Vargas, Conjuntura Econômica - IGP (FGV/Conj. Econ. - IGP)",-
+IGP12_IGPOG12,IGP-OG - geral - índice (ago. 1994 = 100),Macroeconômico,"Fundação Getulio Vargas, Conjuntura Econômica - IGP (FGV/Conj. Econ. - IGP)",-
+BPAG12_SERR12,Balanço de pagamentos - serviços - receita,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+IGP12_IPAA12,IPA-DI - origem - prod. agropecuários - índice (ago. 1994 = 100),Macroeconômico,"Fundação Getulio Vargas, Conjuntura Econômica - IGP (FGV/Conj. Econ. - IGP)",-
+FUNCEX12_XPAL2N12,Exportações - produtos alimentícios - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+IFS12_SOJAOP12,Commodities - óleo de soja - cotação internacional,Macroeconômico,"Fundo Monetário Internacional, International Financial Statistics (FMI/IFS)",US$
+BPAG12_SEROUTROSR12,Balanço de pagamentos - serviços - outros serviços de negócio - receita,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+FUNCEX12_MPPETCOMB2N12,Importações - derivados do petróleo - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+BM12_DTGFN12,DSLP - total - governo federal e Banco Central,Macroeconômico,"Banco Central do Brasil, Notas Econômico-financeiras para a Imprensa, Finanças Públicas (Bacen/Notas Imprensa/F. Púb)",R$
+FUNCEX12_XVEMM2N12,Exportações - extração de minerais metálicos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XQB12,Exportações - produtos básicos - quantum - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+IFS12_BEEFB12,Commodities - carne - cotação internacional,Macroeconômico,"Fundo Monetário Internacional, International Financial Statistics (FMI/IFS)",US$
+FUNCEX12_XVPAP2N12,"Exportações - celulose, papel e produtos de papel - (FOB)",Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XPTEXT2N12,Exportações - produtos têxteis - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPEPET2N12,Importações - extração de petróleo e gás natural - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_MPTEXT2N12,Importações - produtos têxteis - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+FUNCEX12_XPQUIM2N12,Exportações - produtos químicos - preços - índice (média 2018 = 100),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),-
+BPAG12_SERTRANSR12,Balanço de pagamentos - serviços - transportes - receita,Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+BPAG12_SERTELR12,"Balanço de pagamentos - serviços - telecomunicação, computação e informações - receita",Macroeconômico,"Banco Central do Brasil, Balanço de Pagamentos (BPM6) (BCB / BP (BPM6))",US$
+IGP12_IGPF12,IGP-DI - geral - centrado - fim período - índice (ago. 1994 = 100),Macroeconômico,"Fundação Getulio Vargas, Conjuntura Econômica - IGP (FGV/Conj. Econ. - IGP)",-
+FUNCEX12_XVQUIM2N12,Exportações - produtos químicos - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+FUNCEX12_XVPLAS2N12,Exportações - produtos de borracha e material plástico - (FOB),Macroeconômico,Fundação Centro de Estudos do Comércio Exterior (Funcex),US$
+IFS12_POULTRY12,Commodities - aves - cotação internacional,Macroeconômico,"Fundo Monetário Internacional, International Financial Statistics (FMI/IFS)",US$

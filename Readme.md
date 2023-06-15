@@ -6,8 +6,8 @@ Alunos: João Gabriel e Carlos Eduardo.
 
 Aplicação criada com o Python 3.10.11.
 
-```bash
-pip install -r requirements.txt
+```bash.
+pip install -r requirementstxt
 ```
 
 ### **Execução**

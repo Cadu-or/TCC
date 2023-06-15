@@ -14,7 +14,7 @@
         <h1>TCC</h1>
     </header>
     <div class="conteudo">
-        <div class="text">
+        <div class="text">  
             <p>
                 Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos, 
                 sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, Stonks é uma ferramenta valiosa 
@@ -30,11 +30,13 @@
         </div>
         <div class="meio">
             <div class="esquerda">
-                <p>Selecione os indicadores:</p>
-                <form method="POST">
+                <p id="indicadores_title" >Selecione os indicadores:</p>
+                <form id="form" method="POST">
                     {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" class="btn btn-primary" value="enviar" />
+                    <div id="indicadores">
+                        {{ form }}
+                        <input id="indicadores_input" type="submit" class="btn btn-primary" value="Enviar" />
+                    </div>
                 </form>
                 <div id="graphDiv">
                     {{ graph_html|safe }}
@@ -42,7 +44,32 @@
             </div>
             <div class="barra"> </div>
             <div class="direita">
-            </div>
+                <div class="info_indicadores">
+                    {% if indicador1 and indicador2 %}
+                        <div class="indicador1_info">
+                            <p><strong>Indicador:</strong> {{ indicador1.code }}</p>
+                            <p><strong>Descrição:</strong> {{ indicador1.descricao }}</p>
+                            <p><strong>Medida:</strong> {{ indicador1.medida }}</p>
+                            <p><strong>Fonte:</strong> {{ indicador1.fonte }}</p>
+                            <p><strong>Grande Tema:</strong> {{ indicador1.grande_tema }}</p>
+                        </div>
+                        <div class="barra"> </div>                        
+                        <div class="indicador2_info">
+                            <p><strong>Indicador:</strong> {{ indicador2.code }}</p>
+                            <p><strong>Descrição:</strong> {{ indicador2.descricao }}</p>
+                            <p><strong>Medida:</strong> {{ indicador2.medida }}</p>
+                            <p><strong>Fonte:</strong> {{ indicador2.fonte }}</p>
+                            <p><strong>Grande Tema:</strong> {{ indicador2.grande_tema }}</p>
+                        </div>
+                    {% else %}
+                        <p class="sem_indicadores"> Selecione os indicadores </p>
+                    {% endif %}
+
+                </div>
+                <div class="info_correlacao">
+                    <p>Informações sobre a correlação</p>
+                </div>
+            </div> 
 
         </div>
         <h3> Aqui vai ter uma aplicação do tcc do Cralo e do Joãozinho. </h3>

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Stick+No+Bills&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {
     background-color: #FFFFFF;
@@ -35,8 +35,8 @@ header {
     .text{
         display: flex;
         flex-direction: column;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
         gap: 10px;
     }
     p{
@@ -55,8 +55,24 @@ header {
     height: 100%;
     width: 95%;
     .esquerda{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         width: calc(50% - 12px);
+        #indicadores_title{
+            margin-bottom: 10px;
+        }
+        #indicadores{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px !important;
+        }
         #id_Indicador1{
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #595959;
+            text-align: center;
             width: 245px;
             height: 27px;
             border: none;
@@ -64,7 +80,24 @@ header {
             border-radius: 8px;
         }
         #id_Indicador2{
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #595959;
+            text-align: center;
             width: 245px;
+            height: 27px;
+            border: none;
+            background-color: #D9D9D9;
+            border-radius: 8px;
+        }
+        #indicadores_input{
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #595959;
+            text-align: center;
+            width: 120px;
             height: 27px;
             border: none;
             background-color: #D9D9D9;
@@ -73,6 +106,55 @@ header {
     }
     .direita{
         width: calc(50% - 12px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        .info_indicadores{
+            display: flex;
+            flex-wrap: wrap;
+            width: 800px;
+            border-radius: 4px;
+            border: solid 2px #D9D9D9;
+
+            .indicador1_info{
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                flex-wrap: wrap;
+                width: calc(50% - 32px);
+            }
+
+            .indicador2_info{
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                flex-wrap: wrap;
+                width: calc(50% - 32px);
+            }
+        }
+
+        .info_indicadores strong{
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 19px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+
+        .info_correlacao{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 349px;
+            width: 800px;
+            border-radius: 4px;
+            background-color: #D9D9D9;
+        }
     }
     .barra{
         display: flex;
@@ -84,4 +166,10 @@ header {
     }
     justify-content: center;
 
+}
+
+.sem_indicadores{
+    font-family: 'Stick No Bills', sans-serif;
+    font-size: 30px;
+    color: #BABABA;
 }
