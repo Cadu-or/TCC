@@ -98,7 +98,7 @@ def metadados(ind1, ind2):
                 }
                  
     indicador2 = {'code': list(df2['CODE'])[0], 
-                  'descricao': list(df2['DESCRICAO'])[0], 
+                  'descricao': list(df2['DESCRICAO'])[0],
                   'medida': list(df2['MEDIDA'])[0],
                   'fonte': list(df2['FONTE'])[0],
                   'grande_tema': list(df2['GRANDE_TEMA'])[0]
