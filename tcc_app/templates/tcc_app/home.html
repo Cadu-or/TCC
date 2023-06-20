@@ -67,7 +67,16 @@
 
                 </div>
                 <div class="info_correlacao">
-                    <p>Informações sobre a correlação</p>
+                    {% if indicador1 and indicador2 %}
+                        <div class="indicador1_corr">
+                            {{ tabela1|safe }}
+                        </div>                     
+                        <div class="indicador2_corr">
+                            {{ tabela2|safe }}
+                        </div>
+                    {% else %}
+                        <p class="sem_indicadores"> Selecione os indicadores </p>
+                    {% endif %}
                 </div>
             </div> 
 

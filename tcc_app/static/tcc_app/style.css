@@ -150,10 +150,18 @@ header {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 349px;
+            height: 400px;
             width: 800px;
             border-radius: 4px;
             background-color: #D9D9D9;
+
+            .indicador1_corr{
+                margin: 10px;
+            }
+            
+            .indicador2_corr{
+                margin: 10px;
+            }
         }
     }
     .barra{
