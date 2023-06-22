@@ -38,6 +38,13 @@
                         <input id="indicadores_input" type="submit" class="btn btn-primary" value="Enviar" />
                     </div>
                 </form>
+                <div id="correlacao_mensage"> 
+                    {% if correlacao %}
+                        <p>Correlação entre {{ indicador1.code }} e {{ indicador2.code }}: <strong>{{ correlacao }}</strong></p>
+                    {% else %}
+                        <p>A correlacao é menor do que 0.9 ou maior do que -0.9</p>
+                    {% endif %}
+                </div>
                 <div id="graphDiv">
                     {{ graph_html|safe }}
                 </div>

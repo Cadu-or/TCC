@@ -2,6 +2,24 @@ import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
 
+def correlacao_numero(ind1, ind2):
+  correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal.csv")
+
+  if ind1 != None and ind2 != None:
+    df1 = correlacoes.query("CODE1 == @ind1 and CODE2 == @ind2 and DELAY == 0")['CORRELATION']
+    df2 = correlacoes.query("CODE1 == @ind2 and CODE2 == @ind1 and DELAY == 0")['CORRELATION']
+    if df1.empty == False:
+      correlacao = list(df1)[0]
+    elif df2.empty == False:
+      correlacao = list(df2)[0]
+    else: 
+      correlacao = None
+  else:
+    correlacao = None
+    
+  return correlacao
+
+
 def graficos(ind1, ind2):
   series = pd.read_csv("tcc_app/static/tcc_app/csv/serie_2000a2021.csv")
 
@@ -88,7 +106,7 @@ def metadados(ind1, ind2):
     df1 = metadados.query("CODE == @ind1").reset_index()
     df2 = metadados.query("CODE == @ind2").reset_index()
 
-    print(list(df1['DESCRICAO'])[0])
+    #print(list(df1['DESCRICAO'])[0])
     # CODE,DESCRICAO,GRANDE_TEMA,FONTE,MEDIDA
     indicador1 = {'code': list(df1['CODE'])[0], 
                   'descricao': list(df1['DESCRICAO'])[0], 
@@ -123,13 +141,13 @@ def correlacoes(ind1, ind2):
       if j['CODE1'] == ind1:
         table1 = pd.concat([table1, pd.DataFrame({'Codigo': [j['CODE2']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
       else:
-        table1 = pd.concat([table1, pd.DataFrame({'Codigo': [j['CODE2']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
+        table1 = pd.concat([table1, pd.DataFrame({'Codigo': [j['CODE1']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
     
     for i, j in df2.iterrows():
       if j['CODE1'] == ind2:
         table2 = pd.concat([table2, pd.DataFrame({'Codigo': [j['CODE2']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
       else:
-        table2 = pd.concat([table2, pd.DataFrame({'Codigo': [j['CODE2']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
+        table2 = pd.concat([table2, pd.DataFrame({'Codigo': [j['CODE1']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
     
     tabela_plot = go.Table(
             header=dict(values=list(table1.columns),
