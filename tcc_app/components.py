@@ -149,20 +149,23 @@ def correlacoes(ind1, ind2):
       else:
         table2 = pd.concat([table2, pd.DataFrame({'Codigo': [j['CODE1']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
     
+    table1 = table1.sort_values(by=['Correlação'], ascending=False)
+    table2 = table2.sort_values(by=['Correlação'], ascending=False)
+
     tabela_plot = go.Table(
             header=dict(values=list(table1.columns),
-                        fill_color='paleturquoise',
+                        fill_color='#b2dafa',
                         align='center'),
             cells=dict(values=[table1.Codigo, table1.Delay, table1.Correlação],
-                      fill_color='lavender',
+                      fill_color='white',
                       align='center'))
     
     tabela2_plot = go.Table(
             header=dict(values=list(table2.columns),
-                        fill_color='paleturquoise',
+                        fill_color='#ffbfb0',
                         align='center'),
             cells=dict(values=[table2.Codigo, table2.Delay, table2.Correlação],
-                      fill_color='lavender',
+                      fill_color='white',
                       align='center'))
 
     

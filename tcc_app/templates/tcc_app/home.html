@@ -17,7 +17,7 @@
         <div class="text">  
             <p>
                 Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos, 
-                sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, Stonks é uma ferramenta valiosa 
+                sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, TCC é uma ferramenta valiosa 
                 para qualquer pessoa interessada em compreender melhor a realidade do Brasil e seus indicadores econômicos, sociais e 
                 ambientais. Seja para fins acadêmicos, profissionais ou simplesmente por curiosidade.
             </p>
@@ -76,9 +76,11 @@
                 <div class="info_correlacao">
                     {% if indicador1 and indicador2 %}
                         <div class="indicador1_corr">
+                            <p> {{indicador1.code}} <p>
                             {{ tabela1|safe }}
                         </div>                     
                         <div class="indicador2_corr">
+                            <p> {{indicador2.code}} <p>
                             {{ tabela2|safe }}
                         </div>
                     {% else %}
@@ -88,7 +90,6 @@
             </div> 
 
         </div>
-        <h3> Aqui vai ter uma aplicação do tcc do Cralo e do Joãozinho. </h3>
     </div>
 
    

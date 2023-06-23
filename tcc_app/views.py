@@ -17,7 +17,6 @@ def home(request):
     tabela1, tabela2 = correlacoes(ind1, ind2)
 
   else:
-    
     correlacao = correlacao_numero(None, None)
     graph_html = graficos(None, None)
     indicador1, indicador2 = metadados(None, None)
