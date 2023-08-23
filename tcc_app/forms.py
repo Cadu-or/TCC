@@ -1,7 +1,7 @@
 from django import forms
 import pandas as pd
 
-dataset = pd.read_csv('tcc_app/static/tcc_app/csv/codigos_correlacao_mensal.csv')
+dataset = pd.read_csv('tcc_app/static/tcc_app/csv/9-filtro_serie_mensal_completa.csv')
 choices = tuple()
 
 for i in pd.unique(dataset['CODE']):

@@ -21,7 +21,7 @@ def correlacao_numero(ind1, ind2):
 
 
 def graficos(ind1, ind2):
-  series = pd.read_csv("tcc_app/static/tcc_app/csv/serie_2000a2021.csv")
+  series = pd.read_csv("tcc_app/static/tcc_app/csv/9-filtro_serie_mensal_completa.csv")
 
   if ind1 != None and ind2 != None:
     df1 = series.query("CODE == @ind1").reset_index()
@@ -101,7 +101,7 @@ def graficos(ind1, ind2):
   return graph_html
 
 def metadados(ind1, ind2):
-  metadados = pd.read_csv("tcc_app/static/tcc_app/csv/metadados_mensal.csv")
+  metadados = pd.read_csv("tcc_app/static/tcc_app/csv/metadados_mensal_completa.csv")
   if ind1 != None and ind2 != None:
     df1 = metadados.query("CODE == @ind1").reset_index()
     df2 = metadados.query("CODE == @ind2").reset_index()
