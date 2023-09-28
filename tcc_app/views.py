@@ -1,11 +1,13 @@
 from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
 from tcc_app.forms import IndicadoresForm 
-from .components import correlacao_numero, graficos, metadados, correlacoes
+import requests
+from .components import correlacao_numero, graficos, metadados, correlacoes, metadados_content
 
 # Create your views here.
 def home(request):
   form = IndicadoresForm()
-  
+
   if request.method == 'POST':
     form = IndicadoresForm(request.POST)
     ind1 = form.data['Indicador1']
@@ -22,6 +24,16 @@ def home(request):
     indicador1, indicador2 = metadados(None, None)
     tabela1, tabela2 = correlacoes(None, None)
 
+
   context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2}
 
   return render(request, "tcc_app/home.html", context=context)
+
+def filter(request):
+  filtro = request.GET.get('filtro')
+  resultados = metadados_content(filtro)
+  resultados_json = [{'CODE': r[0], 'DESCRICAO': r[1]} for r in resultados]
+  resultados_json = {'resultados': resultados_json}
+  print(type(resultados_json))
+  
+  return JsonResponse(resultados_json)

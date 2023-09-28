@@ -1,36 +1,58 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage</title>
     <link rel="stylesheet" href="{% static '/tcc_app/reset.css' %}">
     <link rel="stylesheet" href="{% static '/tcc_app/style.css' %}">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <header>
         <h1>TCC</h1>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <div class="sidebarContent">
+                <h2> Lista de Indicadores </h2>
+                <form id="filtro-form">
+                    <input type="text" id="campo-filtro" placeholder="Buscar por uma palavra chave">
+                    <button type="button" id="filtro-botao">Filtrar</button>
+                </form>
+                <ul id="resultado">
+
+                </ul>
+            </div>
+        </div>
+        <button class="openbtn" onclick="openNav()">☰ Dicionário de Indicadores</button>
     </header>
     <div class="conteudo">
-        <div class="text">  
+        <div class="text">
             <p>
-                Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos, 
-                sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, TCC é uma ferramenta valiosa 
-                para qualquer pessoa interessada em compreender melhor a realidade do Brasil e seus indicadores econômicos, sociais e 
+                Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos,
+                sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, TCC é uma ferramenta
+                valiosa
+                para qualquer pessoa interessada em compreender melhor a realidade do Brasil e seus indicadores
+                econômicos, sociais e
                 ambientais. Seja para fins acadêmicos, profissionais ou simplesmente por curiosidade.
             </p>
             <p>
-                Os indicadores utilizados foram retirados do site Ipeadata, uma plataforma mantida pelo Instituto de Pesquisa Econômica Aplicada (IPEA), que 
-                disponibiliza uma grande quantidade de informações relacionadas à economia, sociedade e meio ambiente do Brasil. Com 
-                acesso a dados atualizados sobre inflação, crescimento econômico, desemprego, saúde, educação, meio ambiente e entre outros,
+                Os indicadores utilizados foram retirados do site Ipeadata, uma plataforma mantida pelo Instituto de
+                Pesquisa Econômica Aplicada (IPEA), que
+                disponibiliza uma grande quantidade de informações relacionadas à economia, sociedade e meio ambiente do
+                Brasil. Com
+                acesso a dados atualizados sobre inflação, crescimento econômico, desemprego, saúde, educação, meio
+                ambiente e entre outros,
                 o Ipeadata oferece uma visão abrangente e detalhada sobre a realidade do país.
             </p>
         </div>
         <div class="meio">
             <div class="esquerda">
-                <p id="indicadores_title" >Selecione os indicadores:</p>
+                <p id="indicadores_title">Selecione os indicadores:</p>
                 <form id="form" method="POST">
                     {% csrf_token %}
                     <div id="indicadores">
@@ -38,9 +60,10 @@
                         <input id="indicadores_input" type="submit" class="btn btn-primary" value="Enviar" />
                     </div>
                 </form>
-                <div id="correlacao_mensage"> 
+                <div id="correlacao_mensage">
                     {% if correlacao %}
-                        <p>Correlação entre {{ indicador1.code }} e {{ indicador2.code }}: <strong>{{ correlacao }}</strong></p>
+                    <p>Correlação entre {{ indicador1.code }} e {{ indicador2.code }}: <strong>{{ correlacao }}</strong>
+                    </p>
                     {% endif %}
                     <p>O valor ideal de correlação está entre 0.9 e 0.95, ou entre -0.95 e -0.9.</p>
                 </div>
@@ -52,44 +75,104 @@
             <div class="direita">
                 <div class="info_indicadores">
                     {% if indicador1 and indicador2 %}
-                        <div class="indicador1_info">
-                            <p><strong>Indicador:</strong> {{ indicador1.code }}</p>
-                            <p><strong>Descrição:</strong> {{ indicador1.descricao }}</p>
-                            <p><strong>Medida:</strong> {{ indicador1.medida }}</p>
-                            <p><strong>Fonte:</strong> {{ indicador1.fonte }}</p>
-                            <p><strong>Grande Tema:</strong> {{ indicador1.grande_tema }}</p>
-                        </div>
-                        <div class="barra"> </div>                        
-                        <div class="indicador2_info">
-                            <p><strong>Indicador:</strong> {{ indicador2.code }}</p>
-                            <p><strong>Descrição:</strong> {{ indicador2.descricao }}</p>
-                            <p><strong>Medida:</strong> {{ indicador2.medida }}</p>
-                            <p><strong>Fonte:</strong> {{ indicador2.fonte }}</p>
-                            <p><strong>Grande Tema:</strong> {{ indicador2.grande_tema }}</p>
-                        </div>
+                    <div class="indicador1_info">
+                        <p><strong>Indicador:</strong> {{ indicador1.code }}</p>
+                        <p><strong>Descrição:</strong> {{ indicador1.descricao }}</p>
+                        <p><strong>Medida:</strong> {{ indicador1.medida }}</p>
+                        <p><strong>Fonte:</strong> {{ indicador1.fonte }}</p>
+                        <p><strong>Grande Tema:</strong> {{ indicador1.grande_tema }}</p>
+                    </div>
+                    <div class="barra"> </div>
+                    <div class="indicador2_info">
+                        <p><strong>Indicador:</strong> {{ indicador2.code }}</p>
+                        <p><strong>Descrição:</strong> {{ indicador2.descricao }}</p>
+                        <p><strong>Medida:</strong> {{ indicador2.medida }}</p>
+                        <p><strong>Fonte:</strong> {{ indicador2.fonte }}</p>
+                        <p><strong>Grande Tema:</strong> {{ indicador2.grande_tema }}</p>
+                    </div>
                     {% else %}
-                        <p class="sem_indicadores"> Selecione os indicadores </p>
+                    <p class="sem_indicadores"> Selecione os indicadores </p>
                     {% endif %}
 
                 </div>
                 <div class="info_correlacao">
                     {% if indicador1 and indicador2 %}
-                        <div class="indicador1_corr">
-                            <p> {{indicador1.code}} <p>
+                    <div class="indicador1_corr">
+                        <p> {{indicador1.code}}
+                        <p>
                             {{ tabela1|safe }}
-                        </div>                     
-                        <div class="indicador2_corr">
-                            <p> {{indicador2.code}} <p>
+                    </div>
+                    <div class="indicador2_corr">
+                        <p> {{indicador2.code}}
+                        <p>
                             {{ tabela2|safe }}
-                        </div>
+                    </div>
                     {% else %}
-                        <p class="sem_indicadores"> Selecione os indicadores </p>
+                    <p class="sem_indicadores"> Selecione os indicadores </p>
                     {% endif %}
                 </div>
-            </div> 
+            </div>
 
         </div>
     </div>
 
-   
+
+    <script>
+        function openNav() {
+            $(document).ready(function () {
+                var filtro
+                $('#filtro-botao').click( function (){
+                    var filtro = $('#campo-filtro').val()
+                    $.ajax({
+                        url: '/filter',
+                        type: 'GET',
+                        data: { 'filtro': filtro ? filtro : '' },
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
+                            for (var key in data.resultados) {
+                                var temp = "<li> <span>" + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>" ;
+                                $('#resultado').append(temp);
+                            }
+                            
+                        }
+                    });
+                })
+                $.ajax({
+                    url: '/filter',
+                    type: 'GET',
+                    data: { 'filtro': filtro ? filtro : '' },
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
+                        for (var key in data.resultados) {
+                            var temp = "<li> <span>" + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>" ;
+                            $('#resultado').append(temp);
+                        }
+                    }
+                });
+            });
+            var elemento = document.getElementById('mySidebar');
+            if (elemento !== null) {
+                document.getElementById("mySidebar").style.width = "50%";
+            }
+
+            var elemento = document.getElementById('main');
+            if (elemento !== null) {
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+        }
+
+        function closeNav() {
+            var elemento = document.getElementById('mySidebar');
+            if (elemento !== null) {
+                document.getElementById("mySidebar").style.width = "0";
+            }
+
+            var elemento = document.getElementById('main');
+            if (elemento !== null) {
+                document.getElementById("main").style.marginLeft = "0";
+            }
+        }
+    </script>
 </body>

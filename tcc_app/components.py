@@ -3,11 +3,11 @@ import plotly.offline as pyo
 import plotly.graph_objs as go
 
 def correlacao_numero(ind1, ind2):
-  correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal.csv")
+  correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/3-correlacao_mensal_completa.csv")
 
   if ind1 != None and ind2 != None:
-    df1 = correlacoes.query("CODE1 == @ind1 and CODE2 == @ind2 and DELAY == 0")['CORRELATION']
-    df2 = correlacoes.query("CODE1 == @ind2 and CODE2 == @ind1 and DELAY == 0")['CORRELATION']
+    df1 = correlacoes.query("CODE1 == @ind1 and CODE2 == @ind2")['CORRELATION']
+    df2 = correlacoes.query("CODE1 == @ind2 and CODE2 == @ind1")['CORRELATION']
     if df1.empty == False:
       correlacao = list(df1)[0]
     elif df2.empty == False:
@@ -168,7 +168,6 @@ def correlacoes(ind1, ind2):
                       fill_color='white',
                       align='center'))
 
-    
     fig = go.Figure(data=tabela_plot)
     fig2 = go.Figure(data=tabela2_plot)
 
@@ -203,3 +202,13 @@ def correlacoes(ind1, ind2):
     table1, table2 = None, None
 
   return table1, table2
+
+def metadados_content(filtro):
+  metadados = pd.read_csv("tcc_app/static/tcc_app/csv/metadados_mensal_completa.csv")
+  if filtro:
+    dataset = metadados.query('DESCRICAO.str.contains(@filtro, case=False)')
+    dataset = dataset[['CODE', 'DESCRICAO']].values.tolist()
+  else:
+    dataset = metadados[['CODE', 'DESCRICAO']].values.tolist()
+
+  return dataset
