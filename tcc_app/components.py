@@ -1,13 +1,18 @@
 import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
-def correlacao_numero(ind1, ind2):
+def correlacao_numero(ind1, ind2, delay):
+  ind1 = 'ABATE12_ABPEBO12'
+  ind2 = 'ABATE12_ABPEBV12'
   correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/3-correlacao_mensal_completa.csv")
+  correlacoesDelay = pd.read_csv("tcc_app/static/tcc_app/csv/corr_mensal_delay_positivo_2.csv")
 
   if ind1 != None and ind2 != None:
-    df1 = correlacoes.query("CODE1 == @ind1 and CODE2 == @ind2")['CORRELATION']
-    df2 = correlacoes.query("CODE1 == @ind2 and CODE2 == @ind1")['CORRELATION']
+    df1 = correlacoesDelay.query("CODE1 == @ind1 and CODE2 == @ind2 and DELAY == @delay")['CORRELATION']
+    df2 = correlacoesDelay.query("CODE1 == @ind2 and CODE2 == @ind1 and DELAY == @delay")['CORRELATION']
     if df1.empty == False:
       correlacao = list(df1)[0]
     elif df2.empty == False:
@@ -20,7 +25,7 @@ def correlacao_numero(ind1, ind2):
   return correlacao
 
 
-def graficos(ind1, ind2):
+def graficos(ind1, ind2, delay):
   series = pd.read_csv("tcc_app/static/tcc_app/csv/9-filtro_serie_mensal_completa.csv")
 
   if ind1 != None and ind2 != None:
@@ -32,6 +37,20 @@ def graficos(ind1, ind2):
     df1['data'] = pd.to_datetime(df1[['YEAR', 'MONTH']].assign(day=1))
     df2['data'] = pd.to_datetime(df2[['YEAR', 'MONTH',]].assign(day=1))
 
+    for y in range(df2['data'].size):
+      if(delay >= 0):
+        df2['data'][y] = df2['data'][y] + relativedelta(months=delay)
+      else:
+        df1['data'][y] = df1['data'][y] + relativedelta(months=abs(delay))
+    for y in range(abs(delay)):
+      if(delay >= 0):
+        index_of_last_item = df2['data'].index[-1]
+        df2 = df2.drop(index_of_last_item)
+      else:
+        index_of_last_item = df1['data'].index[-1]
+        df1 = df1.drop(index_of_last_item)
+
+      
     traco1 = go.Scatter(x=df1["data"], y=df1["VALUE"], name=ind1, yaxis='y')
     traco2 = go.Scatter(x=df2["data"], y=df2["VALUE"], name=ind2, yaxis='y2')
 
