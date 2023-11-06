@@ -15,6 +15,8 @@ def correlacao_numero(ind1, ind2, delay):
     port=config('DB_PORT')
   )
 
+  print("tá entrando aqui")
+  print(config('DB_HOST'),config('DB_PORT'),config('DB_NAME'))
   result1 = db.execute_query(f"SELECT 1")
 
   return int(result1[0][0])
