@@ -13,7 +13,7 @@ def home(request):
     ind1 = form.data['Indicador1']
     ind2 = form.data['Indicador2']
     delay = int(form.data['Delay'])
-    print(delay)
+    #print(delay)
     
     correlacao = correlacao_numero(ind1, ind2, delay)
     graph_html = graficos(ind1, ind2, delay)
@@ -36,6 +36,6 @@ def filter(request):
   resultados = metadados_content(filtro)
   resultados_json = [{'CODE': r[0], 'DESCRICAO': r[1]} for r in resultados]
   resultados_json = {'resultados': resultados_json}
-  print(type(resultados_json))
+  #print(type(resultados_json))
   
   return JsonResponse(resultados_json)

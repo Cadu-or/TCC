@@ -14,14 +14,7 @@ def correlacao_numero(ind1, ind2, delay):
     host=config('DB_HOST'),
     port=config('DB_PORT')
   )
-
-  print("tá entrando aqui")
-  result1 = db.execute_query(f"SELECT 1")
-  print("fez a query")
-  print(config('DB_HOST'),config('DB_PORT'),config('DB_NAME'))
-
-  return int(result1[0][0])
-
+  
   if ind1 != None and ind2 != None:
     result1 = db.execute_query(f"SELECT CORRELATION FROM \"tcc-aplicacao\".tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND DELAY = {delay}")
     result2 = db.execute_query(f"SELECT CORRELATION FROM \"tcc-aplicacao\".tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND DELAY = {delay}")

@@ -13,7 +13,7 @@ for i in range(-12,13):
   auxiliar = ((i,i),)
   choicesDelay = choicesDelay + auxiliar
 
-print(choicesDelay)
+#print(choicesDelay)
 
 class IndicadoresForm(forms.Form):
   Indicador1 = forms.ChoiceField(choices=choices, label="")
