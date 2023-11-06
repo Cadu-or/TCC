@@ -1,27 +1,35 @@
 import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from .database import DatabaseConnection
+from decouple import config
+import time
 
 def correlacao_numero(ind1, ind2, delay):
-  ind1 = 'ABATE12_ABPEBO12'
-  ind2 = 'ABATE12_ABPEBV12'
-  correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/3-correlacao_mensal_completa.csv")
-  correlacoesDelay = pd.read_csv("tcc_app/static/tcc_app/csv/corr_mensal_delay_positivo_2.csv")
+  db = DatabaseConnection(
+    dbname=config('DB_NAME'),
+    user=config('DB_USER'),
+    password=config('DB_PASSWORD'),
+    host=config('DB_HOST'),
+    port=config('DB_PORT')
+  )
 
   if ind1 != None and ind2 != None:
-    df1 = correlacoesDelay.query("CODE1 == @ind1 and CODE2 == @ind2 and DELAY == @delay")['CORRELATION']
-    df2 = correlacoesDelay.query("CODE1 == @ind2 and CODE2 == @ind1 and DELAY == @delay")['CORRELATION']
-    if df1.empty == False:
-      correlacao = list(df1)[0]
-    elif df2.empty == False:
-      correlacao = list(df2)[0]
+    result1 = db.execute_query(f"SELECT CORRELATION FROM \"tcc-aplicacao\".tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND DELAY = {delay}")
+    result2 = db.execute_query(f"SELECT CORRELATION FROM \"tcc-aplicacao\".tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND DELAY = {delay}")
+
+    if result1:
+      correlacao = float(result1[0][0])
+    elif result2:
+      correlacao = float(result2[0][0])
     else: 
       correlacao = None
   else:
     correlacao = None
     
+  db.close()
+
   return correlacao
 
 
