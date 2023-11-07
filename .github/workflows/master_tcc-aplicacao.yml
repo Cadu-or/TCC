@@ -64,4 +64,4 @@ jobs:
         with:
           app-name: 'TCC-aplicacao'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1FA130DBEE1E420D80277A82CE010C18 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3CAEAFC649C047DB9AEBEA1F91106F95 }}
