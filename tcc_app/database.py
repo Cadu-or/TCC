@@ -1,4 +1,4 @@
-import pypyodbc as odbc
+import pyodbc as odbc
 
 class DatabaseConnection:
   def __init__(self, dbname, user, password, host):
@@ -9,7 +9,7 @@ class DatabaseConnection:
     self.conn = None
 
   def connect(self):
-    driver = 'ODBC Driver 18 for SQL Server'
+    driver = 'SQL SERVER'
     connection_string = f'Driver={driver};Server={self.host};Database={self.dbname};Uid={self.user};Pwd={self.password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;'
     print(connection_string)
     self.conn = odbc.connect(connection_string)
