@@ -1,24 +1,19 @@
-import psycopg2
+import pypyodbc as odbc
 
 class DatabaseConnection:
-  def __init__(self, dbname, user, password, host, port):
+  def __init__(self, dbname, user, password, host):
     self.dbname = dbname
     self.user = user
     self.password = password
     self.host = host
-    self.port = port
     self.conn = None
 
   def connect(self):
-    if self.conn is None or self.conn.closed != 0:
-      self.conn = psycopg2.connect(
-          dbname=self.dbname,
-          user=self.user,
-          password=self.password,
-          host=self.host,
-          port=self.port
-        )
-
+    driver = 'ODBC Driver 18 for SQL Server'
+    connection_string = f'Driver={driver};Server={self.host};Database={self.dbname};Uid={self.user};Pwd={self.password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;'
+    print(connection_string)
+    self.conn = odbc.connect(connection_string)
+    
   def execute_query(self, query):
     self.connect()
     cur = self.conn.cursor()
@@ -26,7 +21,3 @@ class DatabaseConnection:
     result = cur.fetchall()
     cur.close()
     return result
-
-  def close(self):
-    if self.conn is not None and self.conn.closed == 0:
-      self.conn.close()

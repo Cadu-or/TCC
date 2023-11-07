@@ -12,12 +12,11 @@ def correlacao_numero(ind1, ind2, delay):
     user=config('DB_USER'),
     password=config('DB_PASSWORD'),
     host=config('DB_HOST'),
-    port=config('DB_PORT')
   )
   
   if ind1 != None and ind2 != None:
-    result1 = db.execute_query(f"SELECT CORRELATION FROM \"tcc-aplicacao\".tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND DELAY = {delay}")
-    result2 = db.execute_query(f"SELECT CORRELATION FROM \"tcc-aplicacao\".tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND DELAY = {delay}")
+    result1 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND delay = {delay}")
+    result2 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND delay = {delay}")
 
     if result1:
       correlacao = float(result1[0][0])
@@ -27,8 +26,7 @@ def correlacao_numero(ind1, ind2, delay):
       correlacao = None
   else:
     correlacao = None
-    
-  db.close()
+
 
   return correlacao
 
