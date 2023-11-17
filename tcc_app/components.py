@@ -157,7 +157,7 @@ def correlacoes(ind1, ind2, db):
     df2asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation ASC")
     df2desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation DESC")
 
-    df2 = pd.concat([df2asc, df1desc])
+    df2 = pd.concat([df2asc, df2desc])
 
     for i, j in df1.iterrows():
       if j['CODE1'] == ind1:
