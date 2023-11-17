@@ -4,9 +4,19 @@ from tcc_app.forms import IndicadoresForm
 import requests
 from .components import correlacao_numero, graficos, metadados, correlacoes, metadados_content
 
+from .database import DatabaseConnection
+from decouple import config
+
 # Create your views here.
 def home(request):
   form = IndicadoresForm()
+
+  db = DatabaseConnection(
+    dbname=config('DB_NAME'),
+    user=config('DB_USER'),
+    password=config('DB_PASSWORD'),
+    host=config('DB_HOST'),
+  )
 
   if request.method == 'POST':
     form = IndicadoresForm(request.POST)
@@ -15,10 +25,10 @@ def home(request):
     delay = int(form.data['Delay'])
     #print(delay)
     
-    correlacao = correlacao_numero(ind1, ind2, delay)
+    correlacao = correlacao_numero(ind1, ind2, delay, db)
     graph_html = graficos(ind1, ind2, delay)
     indicador1, indicador2 = metadados(ind1, ind2)
-    tabela1, tabela2 = correlacoes(ind1, ind2)
+    tabela1, tabela2 = correlacoes(ind1, ind2, db)
 
   else:
     correlacao = correlacao_numero(None, None, None)

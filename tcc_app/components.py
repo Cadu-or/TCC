@@ -2,18 +2,9 @@ import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
 from dateutil.relativedelta import relativedelta
-from .database import DatabaseConnection
-from decouple import config
 import time
 
-def correlacao_numero(ind1, ind2, delay):
-  db = DatabaseConnection(
-    dbname=config('DB_NAME'),
-    user=config('DB_USER'),
-    password=config('DB_PASSWORD'),
-    host=config('DB_HOST'),
-  )
-  
+def correlacao_numero(ind1, ind2, delay, db):
   if ind1 != None and ind2 != None:
     result1 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND delay = {delay}")
     result2 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND delay = {delay}")
@@ -153,14 +144,13 @@ def metadados(ind1, ind2):
   return indicador1, indicador2
 
 
-def correlacoes(ind1, ind2):
-  corr_mensal = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal.csv")
+def correlacoes(ind1, ind2, db):
   if ind1 != None and ind2 != None:
     table1 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
     table2 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
 
-    df1 = corr_mensal.query("CODE1 == @ind1 or CODE2 == @ind1")
-    df2 = corr_mensal.query("CODE1 == @ind2 or CODE2 == @ind2")
+    df1 = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC")
+    df2 = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC")
 
     for i, j in df1.iterrows():
       if j['CODE1'] == ind1:
