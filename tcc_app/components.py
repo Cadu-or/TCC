@@ -149,8 +149,15 @@ def correlacoes(ind1, ind2, db):
     table1 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
     table2 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
 
-    df1 = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC")
-    df2 = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC")
+    df1asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC")
+    df1desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC")
+
+    df1 = pd.concat([df1asc, df1desc])
+
+    df2asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation ASC")
+    df2desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation DESC")
+
+    df2 = pd.concat([df2asc, df1desc])
 
     for i, j in df1.iterrows():
       if j['CODE1'] == ind1:
