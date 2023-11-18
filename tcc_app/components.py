@@ -1,25 +1,24 @@
 import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import time
 
-def correlacao_numero(ind1, ind2, delay):
-  correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/3-correlacao_mensal_completa.csv")
-  correlacoesDelay = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal_completa.csv")
-
+def correlacao_numero(ind1, ind2, delay, db):
   if ind1 != None and ind2 != None:
-    df1 = correlacoesDelay.query("CODE1 == @ind1 and CODE2 == @ind2 and DELAY == @delay")['CORRELATION']
-    df2 = correlacoesDelay.query("CODE1 == @ind2 and CODE2 == @ind1 and DELAY == @delay")['CORRELATION']
-    if df1.empty == False:
-      correlacao = list(df1)[0]
-    elif df2.empty == False:
-      correlacao = list(df2)[0]
+    result1 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND delay = {delay}")
+    result2 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND delay = {delay}")
+
+    if result1:
+      correlacao = float(result1[0][0])
+    elif result2:
+      correlacao = float(result2[0][0])
     else: 
       correlacao = None
   else:
     correlacao = None
-    
+
+
   return correlacao
 
 
@@ -145,14 +144,20 @@ def metadados(ind1, ind2):
   return indicador1, indicador2
 
 
-def correlacoes(ind1, ind2):
-  corr_mensal = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal_completa.csv")
+def correlacoes(ind1, ind2, db):
   if ind1 != None and ind2 != None:
     table1 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
     table2 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
 
-    df1 = corr_mensal.query("CODE1 == @ind1 or CODE2 == @ind1")
-    df2 = corr_mensal.query("CODE1 == @ind2 or CODE2 == @ind2")
+    df1asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC")
+    df1desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC")
+
+    df1 = pd.concat([df1asc, df1desc])
+
+    df2asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation ASC")
+    df2desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation DESC")
+
+    df2 = pd.concat([df2asc, df2desc])
 
     for i, j in df1.iterrows():
       if j['CODE1'] == ind1:
