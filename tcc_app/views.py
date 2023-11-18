@@ -31,10 +31,10 @@ def home(request):
     tabela1, tabela2 = correlacoes(ind1, ind2, db)
 
   else:
-    correlacao = correlacao_numero(None, None, None)
+    correlacao = correlacao_numero(None, None, None, db)
     graph_html = graficos(None, None, None)
     indicador1, indicador2 = metadados(None, None)
-    tabela1, tabela2 = correlacoes(None, None)
+    tabela1, tabela2 = correlacoes(None, None, db)
 
 
   context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2}
