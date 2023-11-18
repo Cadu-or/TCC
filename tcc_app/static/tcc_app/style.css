@@ -40,6 +40,7 @@ header {
 
 .conteudo{
     margin-top: 140px;
+    position: absolute;
     .text{
         display: flex;
         flex-direction: column;
@@ -405,4 +406,19 @@ header {
     padding: 5px;
     border: black solid 1px;
     border-radius: 5px;
+}
+
+.modal{
+    display: none;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: tomato;
+    z-index: 1000;
+}
+
+.show{
+    display: block;
 }

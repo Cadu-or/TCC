@@ -10,14 +10,14 @@ from decouple import config
 # Create your views here.
 def home(request):
   form = IndicadoresForm()
-
+  
   db = DatabaseConnection(
     dbname=config('DB_NAME'),
     user=config('DB_USER'),
     password=config('DB_PASSWORD'),
     host=config('DB_HOST'),
   )
-
+  
   if request.method == 'POST':
     form = IndicadoresForm(request.POST)
     ind1 = form.data['Indicador1']
@@ -37,8 +37,10 @@ def home(request):
     tabela1, tabela2 = correlacoes(None, None, db)
 
 
-  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2}
-
+  print(indicador1)
+  print(indicador2)
+  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2, 'condicao': condicao }
+  
   return render(request, "tcc_app/home.html", context=context)
 
 def filter(request):

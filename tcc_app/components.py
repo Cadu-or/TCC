@@ -56,7 +56,7 @@ def graficos(ind1, ind2, delay):
 
     layout = go.Layout(title='Gráfico com Dois Indicadores')
 
-    fig.update_layout(yaxis=dict(title=ind1))
+    fig.update_layout(yaxis=dict(title=ind1), legend=dict(x=-0, y=1.2))
     fig.update_layout(yaxis2=dict(title=ind2, overlaying='y', side='right'))
 
     # Criar o objeto de gráfico
@@ -96,7 +96,7 @@ def graficos(ind1, ind2, delay):
         family='Stick No Bills',  # Fonte do texto
         size=40,  # Tamanho da fonte do texto
         color='#BABABA'  # Cor do texto
-      ),
+      )
     )
 
     # Configurar layout do gráfico
