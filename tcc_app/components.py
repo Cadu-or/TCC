@@ -146,79 +146,82 @@ def metadados(ind1, ind2):
 
 def correlacoes(ind1, ind2, db):
   if ind1 != None and ind2 != None:
-    table1 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
-    table2 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
+    table1 = pd.DataFrame(columns=['codigo', 'delay', 'correlacao'])
+    table2 = pd.DataFrame(columns=['codigo', 'delay', 'correlacao'])
 
     df1asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC")
     df1desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC")
 
-    df1 = pd.concat([df1asc, df1desc])
+    df1 = df1asc + df1desc
 
     df2asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation ASC")
     df2desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation DESC")
 
-    df2 = pd.concat([df2asc, df2desc])
-
-    for i, j in df1.iterrows():
-      if j['CODE1'] == ind1:
-        table1 = pd.concat([table1, pd.DataFrame({'Codigo': [j['CODE2']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
+    df2 = df2asc + df2desc
+  
+    for row in df1:
+      if row[1] == ind1:
+        table1 = pd.concat([table1, pd.DataFrame({'codigo': [row[2]], 'delay': [row[3]], 'correlacao': [row[0]]})], ignore_index=True)
       else:
-        table1 = pd.concat([table1, pd.DataFrame({'Codigo': [j['CODE1']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
-    
-    for i, j in df2.iterrows():
-      if j['CODE1'] == ind2:
-        table2 = pd.concat([table2, pd.DataFrame({'Codigo': [j['CODE2']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
+        table1 = pd.concat([table1, pd.DataFrame({'codigo': [row[1]], 'delay': [row[3]], 'correlacao': [row[0]]})], ignore_index=True)
+
+    for row in df2:
+      if row[1] == ind2:
+        table2 = pd.concat([table2, pd.DataFrame({'codigo': [row[2]], 'delay': [row[3]], 'correlacao': [row[0]]})], ignore_index=True)
       else:
-        table2 = pd.concat([table2, pd.DataFrame({'Codigo': [j['CODE1']], 'Delay': [j['DELAY']], 'Correlação': [j['CORRELATION']]})], ignore_index=True)
+        table2 = pd.concat([table2, pd.DataFrame({'codigo': [row[1]], 'delay': [row[3]], 'correlacao': [row[0]]})], ignore_index=True)
     
-    table1 = table1.sort_values(by=['Correlação'], ascending=False)
-    table2 = table2.sort_values(by=['Correlação'], ascending=False)
+    table1 = table1.sort_values(by=['correlacao'], ascending=False)
+    table2 = table2.sort_values(by=['correlacao'], ascending=False)
 
-    tabela_plot = go.Table(
-            header=dict(values=list(table1.columns),
-                        fill_color='#b2dafa',
-                        align='center'),
-            cells=dict(values=[table1.Codigo, table1.Delay, table1.Correlação],
-                      fill_color='white',
-                      align='center'))
+    # tabela_plot = go.Table(
+    #         header=dict(values=list(table1.columns),
+    #                     fill_color='#b2dafa',
+    #                     align='center'),
+    #         cells=dict(values=[table1.Codigo, table1.Delay, table1.Correlação],
+    #                   fill_color='white',
+    #                   align='center'))
     
-    tabela2_plot = go.Table(
-            header=dict(values=list(table2.columns),
-                        fill_color='#ffbfb0',
-                        align='center'),
-            cells=dict(values=[table2.Codigo, table2.Delay, table2.Correlação],
-                      fill_color='white',
-                      align='center'))
+    # tabela2_plot = go.Table(
+    #         header=dict(values=list(table2.columns),
+    #                     fill_color='#ffbfb0',
+    #                     align='center'),
+    #         cells=dict(values=[table2.Codigo, table2.Delay, table2.Correlação],
+    #                   fill_color='white',
+    #                   align='center'))
 
-    fig = go.Figure(data=tabela_plot)
-    fig2 = go.Figure(data=tabela2_plot)
+    # fig = go.Figure(data=tabela_plot)
+    # fig2 = go.Figure(data=tabela2_plot)
 
-    fig.update_layout(
-      margin=dict(l=0, r=0, t=0, b=0),
-      plot_bgcolor='rgba(0,0,0,0)',   # Definir o fundo do gráfico como transparente
-      showlegend=False,               # Ocultar a legenda
-      width=375,
-      height=375,
-      font=dict(
-        family='Inter',  # Fonte do texto
-        size=10,  # Tamanho da fonte do texto
-      ),
-    )
+    # fig.update_layout(
+    #   margin=dict(l=0, r=0, t=0, b=0),
+    #   plot_bgcolor='rgba(0,0,0,0)',   # Definir o fundo do gráfico como transparente
+    #   showlegend=False,               # Ocultar a legenda
+    #   width=375,
+    #   height=375,
+    #   font=dict(
+    #     family='Inter',  # Fonte do texto
+    #     size=10,  # Tamanho da fonte do texto
+    #   ),
+    # )
 
-    fig2.update_layout(
-      margin=dict(l=0, r=0, t=0, b=0),
-      plot_bgcolor='rgba(0,0,0,0)',   # Definir o fundo do gráfico como transparente
-      showlegend=False,               # Ocultar a legenda
-      width=375,
-      height=375,
-      font=dict(
-        family='Inter',  # Fonte do texto
-        size=10,  # Tamanho da fonte do texto
-      ),
-    )
+    # fig2.update_layout(
+    #   margin=dict(l=0, r=0, t=0, b=0),
+    #   plot_bgcolor='rgba(0,0,0,0)',   # Definir o fundo do gráfico como transparente
+    #   showlegend=False,               # Ocultar a legenda
+    #   width=375,
+    #   height=375,
+    #   font=dict(
+    #     family='Inter',  # Fonte do texto
+    #     size=10,  # Tamanho da fonte do texto
+    #   ),
+    # )
 
-    table1 = pyo.plot(fig, output_type='div')
-    table2 = pyo.plot(fig2, output_type='div')
+    # table1 = pyo.plot(fig, output_type='div')
+    # table2 = pyo.plot(fig2, output_type='div')
+
+    table1 = table1.to_dict(orient='records')
+    table2 = table2.to_dict(orient='records')
 
   else:
     table1, table2 = None, None

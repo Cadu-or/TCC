@@ -157,7 +157,8 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 50px;
+        gap: 25px;
+        
         .info_indicadores{
             display: flex;
             flex-wrap: wrap;
@@ -206,32 +207,92 @@ header {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 408px;
             width: 800px;
+            min-height: 408px;
             border-radius: 4px;
-            border: solid 2px #D9D9D9 ;
+            border: solid 2px #D9D9D9;
+            padding: 10px 0px;
+            gap: 10px;
 
-            .indicador1_corr{
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
-                margin: 10px;
-                gap: 5px;
-                color: #55585C;
+            .tabela-azul{
+                font-family: "Maven Pro", Times, serif;
+                border: 2px solid #70AADA;
+                width: 45%;
+                height: 400px;
+                text-align: center;
+                border-collapse: collapse;
+                
+            }
+
+            .tabela-azul caption {
+                padding-bottom: 5px;
             }
             
-            .indicador2_corr{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                margin: 10px;
-                gap: 5px;
-                color: #55585C;
+            .tabela-azul td, th {
+                border: 2px solid #70AADA;
+                padding: 4px 4px;
             }
+
+
+            .tabela-azul tbody td a {
+                font-size: 14px;
+                color: black;
+            }
+
+            .tabela-azul thead {
+                background: #70AADA;
+                background: -moz-linear-gradient(top, #94bfe3 0%, #7eb2dd 66%, #70AADA 100%);
+                background: -webkit-linear-gradient(top, #94bfe3 0%, #7eb2dd 66%, #70AADA 100%);
+                background: linear-gradient(to bottom, #94bfe3 0%, #7eb2dd 66%, #70AADA 100%);
+            }
+
+            .tabela-azul thead th {
+                font-size: 16px;
+                font-weight: 500;
+                color: #FFFFFF;
+                text-align: center;
+            }
+            
+            
+            .tabela-vermelha {
+                font-family: "Maven Pro", Times, serif;
+                width: 45%;
+                text-align: center;
+                border-collapse: collapse;
+
+            }
+
+            .tabela-vermelha caption {
+                padding-bottom: 5px;
+            }
+    
+            .tabela-vermelha td, th {
+                border: 2px solid #A54644;
+                padding: 4px 4px;
+            }
+
+            .tabela-vermelha tbody td a{
+                font-size: 14px;
+                color: black;
+            }
+
+            .tabela-vermelha thead {
+                background: #A54644;
+                background: -moz-linear-gradient(top, #bb7473 0%, #ae5856 66%, #A54644 100%);
+                background: -webkit-linear-gradient(top, #bb7473 0%, #ae5856 66%, #A54644 100%);
+                background: linear-gradient(to bottom, #bb7473 0%, #ae5856 66%, #A54644 100%);
+            }
+
+            .tabela-vermelha thead th {
+                font-size: 16px;
+                font-weight: 500;
+                color: #FFFFFF;
+                text-align: center;
+            }
+
         }
     }
+
     .barra{
         display: flex;
         align-items: center;
@@ -421,4 +482,12 @@ header {
 
 .show{
     display: block;
+}
+
+
+
+.tabelas{
+    display: flex;
+    gap: 20px;
+    width: 90%;
 }

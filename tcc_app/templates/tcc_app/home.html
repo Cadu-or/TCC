@@ -8,6 +8,9 @@
     <title>HomePage</title>
     <link rel="stylesheet" href="{% static '/tcc_app/reset.css' %}">
     <link rel="stylesheet" href="{% static '/tcc_app/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -29,9 +32,6 @@
             </div>
         </div>
         <button class="openbtn" onclick="openNav()">☰ Dicionário de Indicadores</button>
-        <button class="modalbtn" onclick="openModal()">
-            Abrir Modal
-        </button>
     </header>
     <div class="conteudo">
         <div class="text">
@@ -100,47 +100,47 @@
                 </div>
                 <div class="info_correlacao">
                     {% if indicador1 and indicador2 %}
-                    <div class="indicador1_corr">
-                        <p> {{indicador1.code}}
-                        <p>
-                            {{ tabela1|safe }}
-                    </div>
-                    <div class="indicador2_corr">
-                        <p> {{indicador2.code}}
-                        <p>
-                            {{ tabela2|safe }}
-                    </div>
+                    <table class="tabela-azul">
+                        <caption>{{indicador1.code}}</caption>
+                        <thead>
+                            <tr>
+                                <th style="border: 2px solid #70AADA !important">Codigo</th>
+                                <th style="border: 2px solid #70AADA !important">Delay</th>
+                                <th style="border: 2px solid #70AADA !important">Correlação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dado in tabela1 %}
+                                <tr>
+                                    <td><a href="/filterhome/{{indicador1.code}}/{{dado.codigo}}/{{dado.delay}}">{{ dado.codigo }}</a></td>
+                                    <td>{{ dado.delay }}</td>
+                                    <td>{{ dado.correlacao }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <table class="tabela-vermelha">
+                        <caption>{{indicador2.code}}</caption>
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Delay</th>
+                                <th>Correlação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dado in tabela2 %}
+                                <tr>
+                                    <td> <a href="/filterhome/{{dado.codigo}}/{{indicador2.code}}/{{dado.delay}}">{{ dado.codigo }}</a></td>
+                                    <td>{{ dado.delay }}</td>
+                                    <td>{{ dado.correlacao }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                     {% else %}
                     <p class="sem_indicadores"> Selecione os indicadores </p>
                     {% endif %}
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal show" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Cabeçalho do Modal -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Título do Modal</h4>
-                            <button onclick="closeModal()">&times;</button>
-                        </div>
-
-                        <!-- Corpo do Modal -->
-                        <!-- Conteúdo do Modal -->
-                        <div class="modal-body">
-                            <h4>{{ produto.nome }}</h4>
-                            <p>Preço: R$ {{ produto.preco }}</p>
-                            <p>{{ produto.descricao }}</p>
-                        </div>
-
-                        <!-- Rodapé do Modal -->
-                        <div class="modal-footer">
-                            <button onclick="closeModal()">Fechar</button>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>

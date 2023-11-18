@@ -36,10 +36,9 @@ def home(request):
     indicador1, indicador2 = metadados(None, None)
     tabela1, tabela2 = correlacoes(None, None, db)
 
+  print(tabela1)
 
-  print(indicador1)
-  print(indicador2)
-  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2, 'condicao': condicao }
+  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2 }
   
   return render(request, "tcc_app/home.html", context=context)
 
@@ -51,3 +50,40 @@ def filter(request):
   #print(type(resultados_json))
   
   return JsonResponse(resultados_json)
+
+def filterhome(request, indicador1=None, indicador2=None, delay=0):
+  form = IndicadoresForm()
+
+  db = DatabaseConnection(
+    dbname=config('DB_NAME'),
+    user=config('DB_USER'),
+    password=config('DB_PASSWORD'),
+    host=config('DB_HOST'),
+  )
+
+  if indicador1 is not None and indicador2 is not None:
+    form.data['Indicador1'] = indicador1
+    form.data['Indicador1'] = indicador2
+    form.data['Delay'] = delay
+    
+    #print(delay)
+    
+    correlacao = correlacao_numero(indicador1, indicador2, delay, db)
+    graph_html = graficos(indicador1, indicador2, delay)
+
+    indic1, indic2 = metadados(indicador1, indicador2)
+
+    tabela1, tabela2 = correlacoes(indicador1, indicador2, db)
+
+    
+  else:
+    correlacao = None
+    graph_html = None
+
+    indic1, indic2 = None, None
+
+    tabela1, tabela2 = None, None
+  
+  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indic1, 'indicador2': indic2, 'tabela1': tabela1, 'tabela2': tabela2 }
+
+  return render(request, "tcc_app/home.html", context=context)
