@@ -5,10 +5,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 def correlacao_numero(ind1, ind2, delay):
-  ind1 = 'ABATE12_ABPEBO12'
-  ind2 = 'ABATE12_ABPEBV12'
   correlacoes = pd.read_csv("tcc_app/static/tcc_app/csv/3-correlacao_mensal_completa.csv")
-  correlacoesDelay = pd.read_csv("tcc_app/static/tcc_app/csv/corr_mensal_delay_positivo_2.csv")
+  correlacoesDelay = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal_completa.csv")
 
   if ind1 != None and ind2 != None:
     df1 = correlacoesDelay.query("CODE1 == @ind1 and CODE2 == @ind2 and DELAY == @delay")['CORRELATION']
@@ -59,7 +57,7 @@ def graficos(ind1, ind2, delay):
 
     layout = go.Layout(title='Gráfico com Dois Indicadores')
 
-    fig.update_layout(yaxis=dict(title=ind1))
+    fig.update_layout(yaxis=dict(title=ind1), legend=dict(x=-0, y=1.2))
     fig.update_layout(yaxis2=dict(title=ind2, overlaying='y', side='right'))
 
     # Criar o objeto de gráfico
@@ -99,7 +97,7 @@ def graficos(ind1, ind2, delay):
         family='Stick No Bills',  # Fonte do texto
         size=40,  # Tamanho da fonte do texto
         color='#BABABA'  # Cor do texto
-      ),
+      )
     )
 
     # Configurar layout do gráfico
@@ -148,7 +146,7 @@ def metadados(ind1, ind2):
 
 
 def correlacoes(ind1, ind2):
-  corr_mensal = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal.csv")
+  corr_mensal = pd.read_csv("tcc_app/static/tcc_app/csv/correlacao_mensal_completa.csv")
   if ind1 != None and ind2 != None:
     table1 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])
     table2 = pd.DataFrame(columns=['Codigo', 'Delay', 'Correlação'])

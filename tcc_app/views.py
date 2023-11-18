@@ -7,7 +7,7 @@ from .components import correlacao_numero, graficos, metadados, correlacoes, met
 # Create your views here.
 def home(request):
   form = IndicadoresForm()
-
+  condicao = False
   if request.method == 'POST':
     form = IndicadoresForm(request.POST)
     ind1 = form.data['Indicador1']
@@ -27,8 +27,10 @@ def home(request):
     tabela1, tabela2 = correlacoes(None, None)
 
 
-  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2}
-
+  print(indicador1)
+  print(indicador2)
+  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2, 'condicao': condicao }
+  
   return render(request, "tcc_app/home.html", context=context)
 
 def filter(request):

@@ -29,6 +29,9 @@
             </div>
         </div>
         <button class="openbtn" onclick="openNav()">☰ Dicionário de Indicadores</button>
+        <button class="modalbtn" onclick="openModal()">
+            Abrir Modal
+        </button>
     </header>
     <div class="conteudo">
         <div class="text">
@@ -113,6 +116,33 @@
                 </div>
             </div>
 
+            <!-- Modal -->
+            <div class="modal show" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Cabeçalho do Modal -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Título do Modal</h4>
+                            <button onclick="closeModal()">&times;</button>
+                        </div>
+
+                        <!-- Corpo do Modal -->
+                        <!-- Conteúdo do Modal -->
+                        <div class="modal-body">
+                            <h4>{{ produto.nome }}</h4>
+                            <p>Preço: R$ {{ produto.preco }}</p>
+                            <p>{{ produto.descricao }}</p>
+                        </div>
+
+                        <!-- Rodapé do Modal -->
+                        <div class="modal-footer">
+                            <button onclick="closeModal()">Fechar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -121,7 +151,7 @@
         function openNav() {
             $(document).ready(function () {
                 var filtro
-                $('#filtro-botao').click( function (){
+                $('#filtro-botao').click(function () {
                     var filtro = $('#campo-filtro').val()
                     $.ajax({
                         url: '/filter',
@@ -131,10 +161,10 @@
                         success: function (data) {
                             $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
                             for (var key in data.resultados) {
-                                var temp = "<li> <span>" + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>" ;
+                                var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="openModal(event)"> <span>` + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
                                 $('#resultado').append(temp);
                             }
-                            
+
                         }
                     });
                 })
@@ -146,7 +176,7 @@
                     success: function (data) {
                         $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
                         for (var key in data.resultados) {
-                            var temp = "<li> <span>" + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>" ;
+                            var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="openModal(event)"> <span>` + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
                             $('#resultado').append(temp);
                         }
                     }
@@ -161,6 +191,7 @@
             if (elemento !== null) {
                 document.getElementById("main").style.marginLeft = "250px";
             }
+            modal()
         }
 
         function closeNav() {
@@ -173,6 +204,18 @@
             if (elemento !== null) {
                 document.getElementById("main").style.marginLeft = "0";
             }
+        }
+
+        function openModal(event){
+            // Acessa o elemento clicado usando 'event.target'
+            console.log('Elemento clicado:', event.target);
+            console.log('Texto do elemento clicado:', event.target.textContent);
+            var elemento = document.getElementById('myModal');
+            elemento.classList.add('show');
+        }
+        function closeModal(){
+            var elemento = document.getElementById('myModal');
+            elemento.classList.remove('show');
         }
     </script>
 </body>
