@@ -173,53 +173,7 @@ def correlacoes(ind1, ind2, db):
     
     table1 = table1.sort_values(by=['correlacao'], ascending=False)
     table2 = table2.sort_values(by=['correlacao'], ascending=False)
-
-    # tabela_plot = go.Table(
-    #         header=dict(values=list(table1.columns),
-    #                     fill_color='#b2dafa',
-    #                     align='center'),
-    #         cells=dict(values=[table1.Codigo, table1.Delay, table1.Correlação],
-    #                   fill_color='white',
-    #                   align='center'))
     
-    # tabela2_plot = go.Table(
-    #         header=dict(values=list(table2.columns),
-    #                     fill_color='#ffbfb0',
-    #                     align='center'),
-    #         cells=dict(values=[table2.Codigo, table2.Delay, table2.Correlação],
-    #                   fill_color='white',
-    #                   align='center'))
-
-    # fig = go.Figure(data=tabela_plot)
-    # fig2 = go.Figure(data=tabela2_plot)
-
-    # fig.update_layout(
-    #   margin=dict(l=0, r=0, t=0, b=0),
-    #   plot_bgcolor='rgba(0,0,0,0)',   # Definir o fundo do gráfico como transparente
-    #   showlegend=False,               # Ocultar a legenda
-    #   width=375,
-    #   height=375,
-    #   font=dict(
-    #     family='Inter',  # Fonte do texto
-    #     size=10,  # Tamanho da fonte do texto
-    #   ),
-    # )
-
-    # fig2.update_layout(
-    #   margin=dict(l=0, r=0, t=0, b=0),
-    #   plot_bgcolor='rgba(0,0,0,0)',   # Definir o fundo do gráfico como transparente
-    #   showlegend=False,               # Ocultar a legenda
-    #   width=375,
-    #   height=375,
-    #   font=dict(
-    #     family='Inter',  # Fonte do texto
-    #     size=10,  # Tamanho da fonte do texto
-    #   ),
-    # )
-
-    # table1 = pyo.plot(fig, output_type='div')
-    # table2 = pyo.plot(fig2, output_type='div')
-
     table1 = table1.to_dict(orient='records')
     table2 = table2.to_dict(orient='records')
 

@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,8 +60,8 @@
                 <form id="form" method="POST">
                     {% csrf_token %}
                     <div id="indicadores">
-                        {{ form }}
-                        <input id="indicadores_input" type="submit" class="btn btn-primary" value="Enviar" />
+                        {{ form.as_p }}
+                        <button type="submit" id="indicadores_input">Enviar</button>
                     </div>
                 </form>
                 <div id="correlacao_mensage">
@@ -123,9 +124,9 @@
                         <caption>{{indicador2.code}}</caption>
                         <thead>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Delay</th>
-                                <th>Correlação</th>
+                                <th style="border: 2px solid #A54644 !important">Codigo</th>
+                                <th style="border: 2px solid #A54644 !important">Delay</th>
+                                <th style="border: 2px solid #A54644 !important">Correlação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -148,6 +149,31 @@
 
 
     <script>
+        var newUrl = window.location.protocol + "//" + window.location.host;
+        window.history.pushState({}, document.title, newUrl);
+        $(document).ready(function(){
+            $('select[name="Indicador1"] option[value="label"]').attr('disabled','disabled');
+            $('select[name="Indicador2"] option[value="label"]').attr('disabled','disabled');
+            $('select[name="Delay"] option[value="label"]').attr('disabled','disabled');
+
+            $('button[type="submit"]').prop('disabled', true);
+            $('select').change(function(){
+                var allSelected = true;
+                $('select').each(function(){
+                    console.log($(this).val())
+                    if ($(this).val() ==  null) {
+                        allSelected = false;
+                    }
+                });
+
+                if (allSelected) {
+                    $('button[type="submit"]').prop('disabled', false);
+                } else {
+                    $('button[type="submit"]').prop('disabled', true);
+                }
+            });
+            
+        });
         function openNav() {
             $(document).ready(function () {
                 var filtro

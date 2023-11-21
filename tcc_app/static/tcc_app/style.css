@@ -76,6 +76,7 @@ header {
             flex-wrap: wrap;
             gap: 20px !important;
         }
+        
         #id_Indicador1{
             font-family: 'Inter', sans-serif;
             font-size: 16px;
@@ -115,18 +116,33 @@ header {
             background-color: #D9D9D9;
             border-radius: 8px;
         }
-        #indicadores_input{
+
+        #indicadores_input:enabled{
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 400;
-            color: #595959;
+            color: white;
             text-align: center;
             width: 120px;
             height: 27px;
             border: none;
-            background-color: #D9D9D9;
+            background-color: #0a4882;
             border-radius: 8px;
         }
+
+        #indicadores_input:disabled{
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #D9D9D9;
+            text-align: center;
+            width: 120px;
+            height: 27px;
+            border: none;
+            background-color: #BABABA;
+            border-radius: 8px;
+        }
+
         #correlacao_mensage{
             width: 100%;
             display: flex;
@@ -216,12 +232,11 @@ header {
 
             .tabela-azul{
                 font-family: "Maven Pro", Times, serif;
-                border: 2px solid #70AADA;
                 width: 45%;
                 height: 400px;
                 text-align: center;
                 border-collapse: collapse;
-                
+                border: 2px solid #70AADA;
             }
 
             .tabela-azul caption {
@@ -229,7 +244,6 @@ header {
             }
             
             .tabela-azul td, th {
-                border: 2px solid #70AADA;
                 padding: 4px 4px;
             }
 
@@ -259,7 +273,7 @@ header {
                 width: 45%;
                 text-align: center;
                 border-collapse: collapse;
-
+                border: 2px solid #A54644;
             }
 
             .tabela-vermelha caption {
@@ -267,7 +281,6 @@ header {
             }
     
             .tabela-vermelha td, th {
-                border: 2px solid #A54644;
                 padding: 4px 4px;
             }
 

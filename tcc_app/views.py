@@ -51,7 +51,8 @@ def filter(request):
   
   return JsonResponse(resultados_json)
 
-def filterhome(request, indicador1=None, indicador2=None, delay=0):
+def filterhome(request, indicador1=None, indicador2=None, delay=None):
+  delayInt = int(delay)
   form = IndicadoresForm()
 
   db = DatabaseConnection(
@@ -64,12 +65,12 @@ def filterhome(request, indicador1=None, indicador2=None, delay=0):
   if indicador1 is not None and indicador2 is not None:
     form.data['Indicador1'] = indicador1
     form.data['Indicador1'] = indicador2
-    form.data['Delay'] = delay
+    form.data['Delay'] = delayInt
     
     #print(delay)
     
-    correlacao = correlacao_numero(indicador1, indicador2, delay, db)
-    graph_html = graficos(indicador1, indicador2, delay)
+    correlacao = correlacao_numero(indicador1, indicador2, delayInt, db)
+    graph_html = graficos(indicador1, indicador2, delayInt)
 
     indic1, indic2 = metadados(indicador1, indicador2)
 
