@@ -59,6 +59,7 @@ header {
 
 .meio{
     margin: auto;
+    position: relative;
     margin-top: 45px;
     display: flex;
     height: 100%;
@@ -482,11 +483,11 @@ header {
     border-radius: 5px;
 }
 
-.modal{
+#modal-indicador, #modal-delay, #modal-aviso{
     display: none;
-    position: relative;
-    top: 50%;
-    left: 50%;
+    position: absolute;
+    top: 0;
+    left: 10%;
     width: 200px;
     height: 200px;
     background-color: tomato;
@@ -494,10 +495,8 @@ header {
 }
 
 .show{
-    display: block;
+    display: block !important;
 }
-
-
 
 .tabelas{
     display: flex;

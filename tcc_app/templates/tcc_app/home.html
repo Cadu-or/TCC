@@ -55,6 +55,23 @@
             </p>
         </div>
         <div class="meio">
+            <div id="modal-indicador">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-indicador`)">×</a>
+                <div>Deseja atribuir esse indicador ao Indicador1 ou Indicador2?</div>
+                <button id="indicador1-button" onclick="closeModal(`modal-indicador`); openIndicador(1)">Indicador 1</button>
+                <button id="indicador2-button" onclick="closeModal(`modal-indicador`); openIndicador(2)">Indicador 2</button>
+            </div>
+            <div id="modal-delay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-delay`)">×</a>
+                <div class="aviso-delay">Escolha o Delay</div>
+                <select id="delay-select"></select>
+            </div>
+            <div id="modal-aviso">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-aviso`)">×</a>
+                <div class="aviso"></div>
+                <button id="indicador2-button" onclick="closeModal(`modal-aviso`)">Fechar</button>
+            </div>
+
             <div class="esquerda">
                 <p id="indicadores_title">Selecione os indicadores:</p>
                 <form id="form" method="POST">
@@ -149,6 +166,7 @@
 
 
     <script>
+        var indicador1 = "{{indicador1}}", indicador2 = "{{indicador2}}", indicadorEscolhido = "";
         var newUrl = window.location.protocol + "//" + window.location.host;
         window.history.pushState({}, document.title, newUrl);
         $(document).ready(function(){
@@ -187,7 +205,7 @@
                         success: function (data) {
                             $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
                             for (var key in data.resultados) {
-                                var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="openModal(event)"> <span>` + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
+                                var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="clickIndicador(event)"> <span>` + data.resultados[key].CODE + "</span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
                                 $('#resultado').append(temp);
                             }
 
@@ -202,7 +220,7 @@
                     success: function (data) {
                         $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
                         for (var key in data.resultados) {
-                            var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="openModal(event)"> <span>` + data.resultados[key].CODE + " </span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
+                            var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="clickIndicador(event)"> <span>` + data.resultados[key].CODE + "</span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
                             $('#resultado').append(temp);
                         }
                     }
@@ -232,15 +250,57 @@
             }
         }
 
-        function openModal(event){
-            // Acessa o elemento clicado usando 'event.target'
-            console.log('Elemento clicado:', event.target);
-            console.log('Texto do elemento clicado:', event.target.textContent);
-            var elemento = document.getElementById('myModal');
+        function openIndicador(indicadorNum){
+            if(indicadorNum === 1){
+                var select = document.getElementById("id_Indicador1");
+                select.value = indicadorEscolhido;
+                indicador1 = indicadorEscolhido;
+                if(indicador2 === "None"){
+                    var aviso = document.querySelector(".aviso");
+                    aviso.innerText = "Escolha algum outro Indicador2 antes de enviar!";
+                    openModal(`modal-aviso`);
+                }
+                openIndicador(0);
+            }else if(indicadorNum === 2){
+                var select = document.getElementById("id_Indicador2");
+                select.value = indicadorEscolhido;
+                indicador2 = indicadorEscolhido;
+                if(indicador1 === "None"){
+                    var aviso = document.querySelector(".aviso");
+                    aviso.innerText = "Escolha algum outro Indicador1 antes de enviar!";
+                    openModal(`modal-aviso`);
+                }
+                openIndicador(0);
+            }else{
+                if(indicador1 !== "None" && indicador2 !== "None"){
+                    var select = document.querySelector("#delay-select");
+                    var options = [];
+                    for(var i = -12; i < 13; i++){
+                        options.push(i);
+                    }
+                    for (var i = 0; i < options.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = options[i];
+                        option.text = options[i];
+                        select.appendChild(option);
+                    }
+                    console.log("Escolher delay");
+                    openModal(`modal-delay`);
+                }
+            }
+        }
+
+        function clickIndicador(event){
+            indicadorEscolhido = event.target.textContent;
+            openModal('modal-indicador');
+        }
+
+        function openModal(modalId){
+            var elemento = document.getElementById(modalId);
             elemento.classList.add('show');
         }
-        function closeModal(){
-            var elemento = document.getElementById('myModal');
+        function closeModal(modalId){
+            var elemento = document.getElementById(modalId);
             elemento.classList.remove('show');
         }
     </script>
