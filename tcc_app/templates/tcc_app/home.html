@@ -65,6 +65,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-delay`)">×</a>
                 <div class="aviso-delay">Escolha o Delay</div>
                 <select id="delay-select"></select>
+                <a id="enviar-dicionario">Enviar</a>
             </div>
             <div id="modal-aviso">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-aviso`)">×</a>
@@ -190,7 +191,13 @@
                     $('button[type="submit"]').prop('disabled', true);
                 }
             });
-            
+            $('#delay-select').change(function(){
+                var select = document.getElementById("id_Delay");
+                var delayDicionario = $('#delay-select').val();
+                select.value = delayDicionario;
+                var url = `/filterhome/${indicador1}/${indicador2}/${delayDicionario}`;
+                document.getElementById('enviar-dicionario').setAttribute('href', url);
+            })
         });
         function openNav() {
             $(document).ready(function () {
@@ -286,6 +293,9 @@
                     }
                     console.log("Escolher delay");
                     openModal(`modal-delay`);
+                    var delayDicionario = $('#delay-select').val();
+                    var url = `/filterhome/${indicador1}/${indicador2}/${delayDicionario}`;
+                    document.getElementById('enviar-dicionario').setAttribute('href', url);
                 }
             }
         }
