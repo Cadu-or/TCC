@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {
-    background-color: #FFFFFF;
+    background-color: #FDFDFD;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 h1 {
@@ -15,7 +15,7 @@ h1 {
     text-align: left;
 }
 
-h2{
+h2 {
     font-size: 30px;
     color: #0a4882;
     margin-bottom: 10px;
@@ -28,7 +28,7 @@ h3 {
 header {
     width: 100%;
     height: 100px;
-    background-color: #E0E0E0;
+    background: linear-gradient(0deg, rgba(253,253,253,1) 0%, rgba(92,134,173,1) 100%);
     display: flex;
     position: fixed;
     top: 0;
@@ -38,18 +38,19 @@ header {
     justify-content: space-between;
 }
 
-.conteudo{
+.conteudo {
     margin-top: 140px;
     position: absolute;
-    .text{
+
+    .text {
         display: flex;
         flex-direction: column;
         margin-left: 40px;
         margin-right: 40px;
         gap: 10px;
     }
-    p{
-        font-family: 'Inter', sans-serif;
+
+    p {
         font-size: 16px;
         font-weight: 400;
         line-height: 19px;
@@ -57,30 +58,31 @@ header {
     }
 }
 
-.meio{
+.meio {
     margin: auto;
     margin-top: 45px;
     display: flex;
     height: 100%;
     width: 95%;
-    .esquerda{
+
+    .esquerda {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         width: calc(50% - 12px);
-        #indicadores_title{
+
+        #indicadores_title {
             margin-bottom: 10px;
         }
-        #indicadores{
+
+        #indicadores {
             display: flex;
             flex-wrap: wrap;
             gap: 20px !important;
         }
-        
-        #id_Indicador1{
-            font-family: 'Inter', sans-serif;
+
+        #id_Indicador1 {
             font-size: 16px;
-            font-weight: 400;
             color: #595959;
             text-align: center;
             width: 245px;
@@ -90,10 +92,9 @@ header {
             background-color: #D9D9D9;
             border-radius: 8px;
         }
-        #id_Indicador2{
-            font-family: 'Inter', sans-serif;
+
+        #id_Indicador2 {
             font-size: 16px;
-            font-weight: 400;
             color: #595959;
             text-align: center;
             width: 245px;
@@ -103,10 +104,9 @@ header {
             background-color: #D9D9D9;
             border-radius: 8px;
         }
-        #id_Delay{
-            font-family: 'Inter', sans-serif;
+
+        #id_Delay {
             font-size: 16px;
-            font-weight: 400;
             color: #595959;
             text-align: center;
             width: 100px;
@@ -117,10 +117,8 @@ header {
             border-radius: 8px;
         }
 
-        #indicadores_input:enabled{
-            font-family: 'Inter', sans-serif;
+        #indicadores_input:enabled {
             font-size: 16px;
-            font-weight: 400;
             color: white;
             text-align: center;
             width: 120px;
@@ -130,10 +128,8 @@ header {
             border-radius: 8px;
         }
 
-        #indicadores_input:disabled{
-            font-family: 'Inter', sans-serif;
+        #indicadores_input:disabled {
             font-size: 16px;
-            font-weight: 400;
             color: #D9D9D9;
             text-align: center;
             width: 120px;
@@ -143,7 +139,7 @@ header {
             border-radius: 8px;
         }
 
-        #correlacao_mensage{
+        #correlacao_mensage {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -151,15 +147,16 @@ header {
             align-items: left;
             justify-content: center;
             margin-top: 30px;
-            font-family: 'Inter', sans-serif;
             text-align: left;
             font-size: 15px;
         }
-        #correlacao_mensage p{
+
+        #correlacao_mensage p {
             min-width: 530px;
         }
-        #correlacao_mensage p strong{
-            font-family: 'Inter', sans-serif;
+
+        #correlacao_mensage p strong {
+            font-weight: 600;
             font-size: 17px;
             font-weight: 600;
             line-height: 19px;
@@ -167,22 +164,23 @@ header {
             text-align: left;
         }
     }
-    .direita{
+
+    .direita {
         width: calc(50% - 12px);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 25px;
-        
-        .info_indicadores{
+
+        .info_indicadores {
             display: flex;
             flex-wrap: wrap;
             width: 800px;
             border-radius: 4px;
             border: solid 2px #D9D9D9;
 
-            .indicador1_info{
+            .indicador1_info {
                 padding: 10px;
                 display: flex;
                 flex-direction: column;
@@ -191,7 +189,7 @@ header {
                 width: calc(50% - 32px);
             }
 
-            .indicador2_info{
+            .indicador2_info {
                 padding: 10px;
                 display: flex;
                 flex-direction: column;
@@ -200,26 +198,26 @@ header {
                 width: calc(50% - 32px);
             }
 
-            .sem_indicadores{
+            .sem_indicadores {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 padding: 10px;
                 width: 100%;
-                
+
             }
         }
 
-        .info_indicadores strong{
-            font-family: 'Inter', sans-serif;
+        .info_indicadores strong {
+            font-weight: 600;
             font-size: 17px;
-            font-weight: 500;
             line-height: 19px;
             letter-spacing: 0em;
             text-align: left;
         }
 
-        .info_correlacao{
+        .info_correlacao {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -230,7 +228,7 @@ header {
             padding: 10px 0px;
             gap: 10px;
 
-            .tabela-azul{
+            .tabela-azul {
                 font-family: "Maven Pro", Times, serif;
                 width: 45%;
                 height: 400px;
@@ -242,8 +240,9 @@ header {
             .tabela-azul caption {
                 padding-bottom: 5px;
             }
-            
-            .tabela-azul td, th {
+
+            .tabela-azul td,
+            th {
                 padding: 4px 4px;
             }
 
@@ -262,12 +261,12 @@ header {
 
             .tabela-azul thead th {
                 font-size: 16px;
-                font-weight: 500;
+
                 color: #FFFFFF;
                 text-align: center;
             }
-            
-            
+
+
             .tabela-vermelha {
                 font-family: "Maven Pro", Times, serif;
                 width: 45%;
@@ -279,12 +278,13 @@ header {
             .tabela-vermelha caption {
                 padding-bottom: 5px;
             }
-    
-            .tabela-vermelha td, th {
+
+            .tabela-vermelha td,
+            th {
                 padding: 4px 4px;
             }
 
-            .tabela-vermelha tbody td a{
+            .tabela-vermelha tbody td a {
                 font-size: 14px;
                 color: black;
             }
@@ -298,7 +298,7 @@ header {
 
             .tabela-vermelha thead th {
                 font-size: 16px;
-                font-weight: 500;
+
                 color: #FFFFFF;
                 text-align: center;
             }
@@ -306,7 +306,7 @@ header {
         }
     }
 
-    .barra{
+    .barra {
         display: flex;
         align-items: center;
         margin: 10px;
@@ -314,46 +314,53 @@ header {
         border-radius: 3px;
         background-color: #D9D9D9;
     }
+
     justify-content: center;
 
 }
 
-.sem_indicadores{
+.sem_indicadores {
     font-family: 'Stick No Bills', sans-serif;
     font-size: 30px;
     color: #BABABA;
 }
 
-@media (max-width: 1700px){
-    .meio{
+@media (max-width: 1700px) {
+    .meio {
         flex-direction: column;
         width: 100%;
         align-items: center;
         justify-content: center;
-        .barra{
+
+        .barra {
             width: 96%;
             height: 4px;
         }
-        .esquerda{
+
+        .esquerda {
             width: 96%;
         }
-        .direita{
+
+        .direita {
             width: 96%;
             margin-bottom: 40px;
             margin-top: 30px;
-            .info_indicadores{
+
+            .info_indicadores {
                 width: 100%;
-                .indicador2_info, .indicador1_info{
+
+                .indicador2_info,
+                .indicador1_info {
                     width: 100%;
                 }
             }
-            .info_correlacao{
+
+            .info_correlacao {
                 width: 100%;
             }
         }
 
-        p{
-            font-family: 'Inter', sans-serif;
+        p {
             font-size: 16px;
             font-weight: 400;
             line-height: 19px;
@@ -369,9 +376,9 @@ header {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #E0E0E0;
+    background-color: #FDFDFD;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: all 0.3s linear;
     padding-top: 60px;
 }
 
@@ -382,8 +389,8 @@ header {
     color: #818181;
     display: block;
     transition: 0.3s;
-  }
-  
+}
+
 .sidebar a:hover {
     color: #f1f1f1;
 }
@@ -393,32 +400,30 @@ header {
     top: 0;
     left: 0;
     font-size: 30px;
-    background-color: #BABABA;
     justify-content: center;
     display: flex;
     align-items: center;
-    border-radius: 100%;
-    margin: 5px;
 }
 
 .openbtn {
     margin-right: 30px;
-    font-size: 10px;
+    font-size: 13px;
     cursor: pointer;
-    background-color: #777777;
+    background-color: #0a4882;
     color: white;
     padding: 10px 15px;
+    border-radius: 8px;
     border: none;
 }
 
-.sidebarContent{
+.sidebarContent {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-#resultado{
+#resultado {
     box-sizing: border-box;
     width: 100%;
     padding: 20px 10px 20px 10px;
@@ -427,20 +432,21 @@ header {
     gap: 5px;
 }
 
-#resultado li{
+#resultado li {
     width: 100%;
     display: flex;
     border: #777777 solid 1px;
 }
 
-#resultado li:nth-child(1) span{
+#resultado li:nth-child(1) span {
     display: flex;
     align-items: center !important;
     justify-content: center !important;
     border: #777777 solid 1px;
+    font-weight: 600;
 }
 
-#resultado li span:nth-child(1){
+#resultado li span:nth-child(1) {
     box-sizing: border-box;
     min-width: 35%;
     max-width: 35%;
@@ -448,11 +454,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: start;
-    background-color: #E0E0E0;
+    background-color: #EEEEEE;
     border: #777777 solid 1px;
 }
 
-#resultado li span:nth-child(2){
+#resultado li span:nth-child(2) {
     box-sizing: border-box;
     min-width: 65%;
     max-width: 65%;
@@ -460,29 +466,37 @@ header {
     display: flex;
     align-items: center;
     justify-content: start;
-    background-color: #E0E0E0;
+    background-color: #EEEEEE;
     border: #777777 solid 1px;
+    
 }
 
-#filtro-botao{
-    padding: 5px;
-    background-color: #777777;
+#filtro-botao {
+    padding: 5px 10px;
+    background-color: #0a4882;
     border: none;
     border-radius: 5px;
     color: white;
     cursor: pointer;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 
-#campo-filtro{
-    background-color: #E0E0E0;
+#campo-filtro {
+    background-color: #EEEEEE;;
     padding: 5px;
-    border: black solid 1px;
-    border-radius: 5px;
+    border-radius: 4px;
+    width: 200px;
+    border: 1px solid #595959
 }
 
-.modal{
+#campo-filtro:focus-visible{
+    border: 1px solid #595959;
+    outline: none;
+}
+
+.modal {
     display: none;
     position: relative;
     top: 50%;
@@ -493,14 +507,31 @@ header {
     z-index: 1000;
 }
 
-.show{
+.show {
     display: block;
 }
 
-
-
-.tabelas{
+.tabelas {
     display: flex;
     gap: 20px;
     width: 90%;
+}
+
+span.tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+span.tooltip:hover::before {
+    content: attr(tooltip);
+    display: block;
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    bottom: 100%;
+    left: 100%;
+    transform: translate(-3%, -5%);
+    white-space: nowrap;
 }

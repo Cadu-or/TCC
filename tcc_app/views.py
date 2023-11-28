@@ -23,7 +23,6 @@ def home(request):
     ind1 = form.data['Indicador1']
     ind2 = form.data['Indicador2']
     delay = int(form.data['Delay'])
-    #print(delay)
     
     correlacao = correlacao_numero(ind1, ind2, delay, db)
     graph_html = graficos(ind1, ind2, delay)
@@ -35,10 +34,11 @@ def home(request):
     graph_html = graficos(None, None, None)
     indicador1, indicador2 = metadados(None, None)
     tabela1, tabela2 = correlacoes(None, None, db)
+    delay = None
 
   print(tabela1)
 
-  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2 }
+  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indicador1, 'indicador2': indicador2, 'tabela1': tabela1, 'tabela2': tabela2, 'delay': delay}
   
   return render(request, "tcc_app/home.html", context=context)
 
@@ -67,8 +67,6 @@ def filterhome(request, indicador1=None, indicador2=None, delay=None):
     form.data['Indicador1'] = indicador2
     form.data['Delay'] = delayInt
     
-    #print(delay)
-    
     correlacao = correlacao_numero(indicador1, indicador2, delayInt, db)
     graph_html = graficos(indicador1, indicador2, delayInt)
 
@@ -85,6 +83,6 @@ def filterhome(request, indicador1=None, indicador2=None, delay=None):
 
     tabela1, tabela2 = None, None
   
-  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indic1, 'indicador2': indic2, 'tabela1': tabela1, 'tabela2': tabela2 }
+  context = {'correlacao': correlacao, 'graph_html': graph_html, 'form':form, 'indicador1': indic1, 'indicador2': indic2, 'tabela1': tabela1, 'tabela2': tabela2, 'delay': delayInt }
 
   return render(request, "tcc_app/home.html", context=context)
