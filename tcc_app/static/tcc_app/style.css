@@ -498,20 +498,63 @@ header {
 }
 
 #modal-indicador, #modal-delay, #modal-aviso {
+    padding: 20px;
     display: none;
     position: absolute;
     top: 0;
-    left: 10%;
-    width: 200px;
-    height: 200px;
-    background-color: tomato;
+    left: 15%;
+    width: 240px;
+    height: 120px;
+    background-color: #EEEEEE;
     z-index: 1000;
+    border: #777777 solid 1px;
+    border-radius: 20px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.button-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#enviar-dicionario, #indicador1-button, #indicador2-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    width: 100px;
+    height: 27px;
+    border: none;
+    background-color: #0a4882;
+    border-radius: 8px;
+    text-decoration:none
+}
+
+#enviar-dicionario:hover ,#indicador1-button:hover, #indicador2-button:hover{
+    cursor: pointer;
+    background-color: #4c91d1;
+}
+
+#delay-select{
+    font-size: 16px;
+    color: #595959;
+    text-align: center;
+    width: 100px;
+    height: 27px;
+    max-height: 200px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 8px;
 }
 
 .show{
-    display: block !important;
+    display: flex !important;
 }
-
 
 
 .tabelas{

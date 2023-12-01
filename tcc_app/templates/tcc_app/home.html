@@ -53,19 +53,23 @@
         </div>
         <div class="meio">
             <div id="modal-indicador">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-indicador`)">×</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-indicador`)"><i class="las la-times-circle la-x" style="color: #A54644; font-size: 18px;"></i></a>
                 <div>Deseja atribuir esse indicador ao Indicador1 ou Indicador2?</div>
-                <button id="indicador1-button" onclick="closeModal(`modal-indicador`); openIndicador(1)">Indicador 1</button>
-                <button id="indicador2-button" onclick="closeModal(`modal-indicador`); openIndicador(2)">Indicador 2</button>
+                <div class="button-group">
+                    <button id="indicador1-button" onclick="closeModal(`modal-indicador`); openIndicador(1)">Indicador 1</button>
+                    <button id="indicador2-button" onclick="closeModal(`modal-indicador`); openIndicador(2)">Indicador 2</button>
+                </div>
             </div>
             <div id="modal-delay">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-delay`)">×</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-delay`)"><i class="las la-times-circle la-x" style="color: #A54644; font-size: 18px;"></i></a>
                 <div class="aviso-delay">Escolha o Delay</div>
-                <select id="delay-select"></select>
-                <a id="enviar-dicionario">Enviar</a>
+                <div class="button-group">
+                    <select id="delay-select"></select>
+                    <a id="enviar-dicionario">Enviar</a>
+                </div>
             </div>
             <div id="modal-aviso">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-aviso`)">×</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-aviso`)"><i class="las la-times-circle la-x" style="color: #A54644; font-size: 18px;"></i></a>
                 <div class="aviso"></div>
                 <button id="indicador2-button" onclick="closeModal(`modal-aviso`)">Fechar</button>
             </div>
