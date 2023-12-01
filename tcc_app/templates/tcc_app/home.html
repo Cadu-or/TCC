@@ -8,9 +8,10 @@
     <title>HomePage</title>
     <link rel="stylesheet" href="{% static '/tcc_app/reset.css' %}">
     <link rel="stylesheet" href="{% static '/tcc_app/style.css' %}">
+    <link rel="stylesheet" href="{% static '/tcc_app/css/line-awesome-1.3.0/1.3.0/css/line-awesome.min.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,7 +21,7 @@
     <header>
         <h1>TCC</h1>
         <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="las la-times-circle la-x" style="color: #A54644;"></i></a>
             <div class="sidebarContent">
                 <h2> Lista de Indicadores </h2>
                 <form id="filtro-form">
@@ -32,26 +33,22 @@
                 </ul>
             </div>
         </div>
-        <button class="openbtn" onclick="openNav()">☰ Dicionário de Indicadores</button>
+        <button class="openbtn" onclick="openNav()"><i class="las la-book" style="font-size: 14px;"></i> Dicionário de Indicadores</button>
     </header>
     <div class="conteudo">
         <div class="text">
             <p>
-                Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos,
-                sociais e ambientais do Brasil. Com uma interface intuitiva e fácil de usar, TCC é uma ferramenta
-                valiosa
+                Essa plataforma se dedica a estudar e analisar as correlações entre diferentes indicadores econômicos do Brasil. 
+                Com uma interface intuitiva e fácil de usar, TCC é uma ferramenta valiosa
                 para qualquer pessoa interessada em compreender melhor a realidade do Brasil e seus indicadores
-                econômicos, sociais e
-                ambientais. Seja para fins acadêmicos, profissionais ou simplesmente por curiosidade.
+                econômicos. Seja para fins acadêmicos, profissionais ou simplesmente por curiosidade.
             </p>
             <p>
                 Os indicadores utilizados foram retirados do site Ipeadata, uma plataforma mantida pelo Instituto de
                 Pesquisa Econômica Aplicada (IPEA), que
                 disponibiliza uma grande quantidade de informações relacionadas à economia, sociedade e meio ambiente do
-                Brasil. Com
-                acesso a dados atualizados sobre inflação, crescimento econômico, desemprego, saúde, educação, meio
-                ambiente e entre outros,
-                o Ipeadata oferece uma visão abrangente e detalhada sobre a realidade do país.
+                Brasil. Com acesso a dados atualizados sobre inflação, crescimento econômico, desemprego, saúde, educação, meio
+                ambiente e entre outros,o Ipeadata oferece uma visão abrangente e detalhada sobre a realidade do país.
             </p>
         </div>
         <div class="meio">
@@ -74,20 +71,25 @@
             </div>
 
             <div class="esquerda">
-                <p id="indicadores_title">Selecione os indicadores:</p>
+                <p id="indicadores_title">Selecione os indicadores e o delay: 
+                    <span class="tooltip" tooltip="A seleção de indicadores e de delay é obrigatória para o cálculo de correlação.">
+                        <i class="las la-info-circle" style="color: #A54644;"></i>
+                    </span>
+                </p>
                 <form id="form" method="POST">
                     {% csrf_token %}
                     <div id="indicadores">
                         {{ form.as_p }}
-                        <button type="submit" id="indicadores_input">Enviar</button>
+                        <button type="submit" id="indicadores_input" style="font-weight: 600;">Enviar</button>
                     </div>
                 </form>
                 <div id="correlacao_mensage">
                     {% if correlacao %}
-                    <p>Correlação entre {{ indicador1.code }} e {{ indicador2.code }}: <strong>{{ correlacao }}</strong>
-                    </p>
+                    <p>Correlação entre 
+                        <strong style="font-weight: 500;">{{ indicador1.code }}</strong> 
+                        e <strong style="font-weight: 500;">{{ indicador2.code }}</strong> 
+                        com o delay de <strong style="font-weight: 500;">{{ delay }}</strong>: <strong>{{ correlacao }}</strong></p>
                     {% endif %}
-                    <p>O valor ideal de correlação está entre 0.9 e 0.95, ou entre -0.95 e -0.9.</p>
                 </div>
                 <div id="graphDiv">
                     {{ graph_html|safe }}
@@ -119,6 +121,9 @@
                 </div>
                 <div class="info_correlacao">
                     {% if indicador1 and indicador2 %}
+                    <span class="tooltip" tooltip="Clique no código para mais informações sobre a correlação." style="position: absolute; top: 0; left: 0; margin: 8px;">
+                        <i class="las la-info-circle" style="color: #A54644;"></i>
+                    </span>
                     <table class="tabela-azul">
                         <caption>{{indicador1.code}}</caption>
                         <thead>

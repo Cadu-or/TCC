@@ -131,7 +131,7 @@ def metadados(ind1, ind2):
                   'grande_tema': list(df1['GRANDE_TEMA'])[0]
                 }
                  
-    indicador2 = {'code': list(df2['CODE'])[0], 
+    indicador2 = {'code': list(df2['CODE'])[0],
                   'descricao': list(df2['DESCRICAO'])[0],
                   'medida': list(df2['MEDIDA'])[0],
                   'fonte': list(df2['FONTE'])[0],
@@ -185,9 +185,11 @@ def correlacoes(ind1, ind2, db):
 def metadados_content(filtro):
   metadados = pd.read_csv("tcc_app/static/tcc_app/csv/metadados_mensal_completa.csv")
   if filtro:
-    dataset = metadados.query('DESCRICAO.str.contains(@filtro, case=False)')
+    dataset = metadados.query('DESCRICAO.str.contains(@filtro, case=False) or CODE.str.contains(@filtro, case=False)')
     dataset = dataset[['CODE', 'DESCRICAO']].values.tolist()
+    dataset = sorted(dataset, key=lambda x: x[0])
   else:
     dataset = metadados[['CODE', 'DESCRICAO']].values.tolist()
+    dataset = sorted(dataset, key=lambda x: x[0])
 
   return dataset
