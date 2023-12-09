@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load mathfilters %}
 <html lang="en">
 
 <head>
@@ -53,19 +54,18 @@
         </div>
         <div class="meio">
             <div id="modal-indicador">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-indicador`)"><i class="las la-times-circle la-x" style="color: #A54644; font-size: 18px;"></i></a>
+                <a 
+                    href="javascript:void(0)" 
+                    class="closebtn" 
+                    style="display: flex; justify-content: end; text-decoration: none;" 
+                    onclick="closeModal(`modal-indicador`)"
+                >
+                    <i class="las la-times-circle la-x" style="color: #A54644; font-size: 18px;"></i>
+                </a>
                 <div>Deseja atribuir esse indicador ao Indicador1 ou Indicador2?</div>
                 <div class="button-group">
                     <button id="indicador1-button" onclick="closeModal(`modal-indicador`); openIndicador(1)">Indicador 1</button>
                     <button id="indicador2-button" onclick="closeModal(`modal-indicador`); openIndicador(2)">Indicador 2</button>
-                </div>
-            </div>
-            <div id="modal-delay">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeModal(`modal-delay`)"><i class="las la-times-circle la-x" style="color: #A54644; font-size: 18px;"></i></a>
-                <div class="aviso-delay">Escolha o Delay</div>
-                <div class="button-group">
-                    <select id="delay-select"></select>
-                    <a id="enviar-dicionario">Enviar</a>
                 </div>
             </div>
             <div id="modal-aviso">
@@ -89,10 +89,19 @@
                 </form>
                 <div id="correlacao_mensage">
                     {% if correlacao %}
-                    <p>Correlação entre 
-                        <strong style="font-weight: 500;">{{ indicador1.code }}</strong> 
-                        e <strong style="font-weight: 500;">{{ indicador2.code }}</strong> 
-                        com o delay de <strong style="font-weight: 500;">{{ delay }}</strong>: <strong>{{ correlacao }}</strong></p>
+                        <p>
+                            Correlação entre <strong style="font-weight: 500;">{{ indicador1.code }}</strong> e <strong style="font-weight: 500;">{{ indicador2.code }}</strong> 
+                            {% if delay > 0 %}
+                                com o delay de
+                                <strong style="font-weight: 500;">{{ delay }}</strong> no <strong style="font-weight: 500;"> {{ indicador2.code }} </strong>:
+                            {% elif delay < 0 %}
+                                com o delay de
+                                <strong style="font-weight: 500;">{{ delay|abs }}</strong> no <strong style="font-weight: 500;"> {{ indicador1.code }} </strong>:
+                            {% else %}
+                                sem delay:
+                            {% endif %}
+                            <strong>{{ correlacao }}</strong>
+                        </p>
                     {% endif %}
                 </div>
                 <div id="graphDiv">
@@ -160,14 +169,14 @@
                             {% for dado in tabela2 %}
                                 <tr>
                                     <td> <a href="/filterhome/{{dado.codigo}}/{{indicador2.code}}/{{dado.delay}}">{{ dado.codigo }}</a></td>
-                                    <td>{{ dado.delay }}</td>
+                                    <td>{{ dado.delay|mul:-1 }}</td>
                                     <td>{{ dado.correlacao }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                     {% else %}
-                    <p class="sem_indicadores"> Selecione os indicadores </p>
+                        <p class="sem_indicadores"> Selecione os indicadores </p>
                     {% endif %}
                 </div>
             </div>
@@ -188,7 +197,6 @@
             $('select').change(function(){
                 var allSelected = true;
                 $('select').each(function(){
-                    console.log($(this).val())
                     if ($(this).val() ==  null) {
                         allSelected = false;
                     }
@@ -200,13 +208,6 @@
                     $('button[type="submit"]').prop('disabled', true);
                 }
             });
-            $('#delay-select').change(function(){
-                var select = document.getElementById("id_Delay");
-                var delayDicionario = $('#delay-select').val();
-                select.value = delayDicionario;
-                var url = `/filterhome/${indicador1}/${indicador2}/${delayDicionario}`;
-                document.getElementById('enviar-dicionario').setAttribute('href', url);
-            })
         });
         function openNav() {
             $(document).ready(function () {
@@ -221,7 +222,7 @@
                         success: function (data) {
                             $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
                             for (var key in data.resultados) {
-                                var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="clickIndicador(event)"> <span>` + data.resultados[key].CODE + "</span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
+                                var temp = `<li> <span class="open-modal" id="${data.resultados[key].CODE}" onclick="clickIndicador(event)">` + data.resultados[key].CODE + "</span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
                                 $('#resultado').append(temp);
                             }
 
@@ -236,7 +237,7 @@
                     success: function (data) {
                         $('#resultado')[0].innerHTML = '<li><span>Code</span> <span>Descricao</span></li>';
                         for (var key in data.resultados) {
-                            var temp = `<li class="open-modal" id="${data.resultados[key].CODE}" onclick="clickIndicador(event)"> <span>` + data.resultados[key].CODE + "</span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
+                            var temp = `<li> <span class="open-modal" id="${data.resultados[key].CODE}" onclick="clickIndicador(event)">` + data.resultados[key].CODE + "</span> <span>" + data.resultados[key].DESCRICAO + "</span> </li>";
                             $('#resultado').append(temp);
                         }
                     }
@@ -271,21 +272,11 @@
                 var select = document.getElementById("id_Indicador1");
                 select.value = indicadorEscolhido;
                 indicador1 = indicadorEscolhido;
-                if(indicador2 === "None"){
-                    var aviso = document.querySelector(".aviso");
-                    aviso.innerText = "Escolha algum outro Indicador2 antes de enviar!";
-                    openModal(`modal-aviso`);
-                }
                 openIndicador(0);
             }else if(indicadorNum === 2){
                 var select = document.getElementById("id_Indicador2");
                 select.value = indicadorEscolhido;
                 indicador2 = indicadorEscolhido;
-                if(indicador1 === "None"){
-                    var aviso = document.querySelector(".aviso");
-                    aviso.innerText = "Escolha algum outro Indicador1 antes de enviar!";
-                    openModal(`modal-aviso`);
-                }
                 openIndicador(0);
             }else{
                 if(indicador1 !== "None" && indicador2 !== "None"){
@@ -300,11 +291,6 @@
                         option.text = options[i];
                         select.appendChild(option);
                     }
-                    console.log("Escolher delay");
-                    openModal(`modal-delay`);
-                    var delayDicionario = $('#delay-select').val();
-                    var url = `/filterhome/${indicador1}/${indicador2}/${delayDicionario}`;
-                    document.getElementById('enviar-dicionario').setAttribute('href', url);
                 }
             }
         }

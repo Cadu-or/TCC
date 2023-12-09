@@ -31,10 +31,8 @@ with open('corr_mensal_delay_negativo_2.csv', newline='') as arquivo_csv:
             dados = (code1, code2, correlacao, delay)
             cur.execute(sql, dados)
             conn.commit()
-            print(count)
         else:
             count = count + 1
-            print("nao inseriu:" + str(count))
 
 
 # Fechar o cursor e a conexão

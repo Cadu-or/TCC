@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tcc_app',
+    'mathfilters'
 ]
 
 MIDDLEWARE = [
