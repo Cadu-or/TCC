@@ -191,7 +191,6 @@
         $(document).ready(function(){
             $('select[name="Indicador1"] option[value="label"]').attr('disabled','disabled');
             $('select[name="Indicador2"] option[value="label"]').attr('disabled','disabled');
-            $('select[name="Delay"] option[value="label"]').attr('disabled','disabled');
 
             $('button[type="submit"]').prop('disabled', true);
             $('select').change(function(){
@@ -252,7 +251,6 @@
             if (elemento !== null) {
                 document.getElementById("main").style.marginLeft = "250px";
             }
-            modal()
         }
 
         function closeNav() {
@@ -272,26 +270,10 @@
                 var select = document.getElementById("id_Indicador1");
                 select.value = indicadorEscolhido;
                 indicador1 = indicadorEscolhido;
-                openIndicador(0);
             }else if(indicadorNum === 2){
                 var select = document.getElementById("id_Indicador2");
                 select.value = indicadorEscolhido;
                 indicador2 = indicadorEscolhido;
-                openIndicador(0);
-            }else{
-                if(indicador1 !== "None" && indicador2 !== "None"){
-                    var select = document.querySelector("#delay-select");
-                    var options = [];
-                    for(var i = -12; i < 13; i++){
-                        options.push(i);
-                    }
-                    for (var i = 0; i < options.length; i++) {
-                        var option = document.createElement("option");
-                        option.value = options[i];
-                        option.text = options[i];
-                        select.appendChild(option);
-                    }
-                }
             }
         }
 

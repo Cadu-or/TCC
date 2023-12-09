@@ -205,7 +205,6 @@ header {
                 align-items: center;
                 padding: 10px;
                 width: 100%;
-
             }
         }
 
@@ -322,7 +321,7 @@ header {
 
 .sem_indicadores {
     font-family: 'Stick No Bills', sans-serif;
-    font-size: 30px;
+    font-size: 30px !important;
     color: #BABABA;
 }
 
@@ -505,13 +504,14 @@ header {
     display: none;
     position: absolute;
     width: 15%;
-    height: 17%;
+    height: 20%;
     background-color: #EEEEEE;
     border: #FFFFFF solid 1px;
     border-radius: 20px;
     justify-content: space-between;
     flex-direction: column;
     z-index: 1000000000000;
+    top: 0;
 }
 
 .button-group {
@@ -545,17 +545,6 @@ header {
     background-color: #4c91d1;
 }
 
-#delay-select {
-    font-size: 16px;
-    color: #595959;
-    text-align: center;
-    width: 100px;
-    height: 27px;
-    max-height: 200px;
-    border: none;
-    background-color: #D9D9D9;
-    border-radius: 8px;
-}
 
 .show {
     display: flex !important;
@@ -607,8 +596,4 @@ span.tooltip:hover::before {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(156, 155, 155)171;
-}
-
-option:hover {
-    background-color: red;
 }
