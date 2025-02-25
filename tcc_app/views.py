@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from tcc_app.forms import IndicadoresForm 
-import requests
 from .components import correlacao_numero, graficos, metadados, correlacoes, metadados_content
 
 from .database import DatabaseConnection

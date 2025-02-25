@@ -2,12 +2,11 @@ import pandas as pd
 import plotly.offline as pyo
 import plotly.graph_objs as go
 from dateutil.relativedelta import relativedelta
-import time
 
 def correlacao_numero(ind1, ind2, delay, db):
   if ind1 != None and ind2 != None:
-    result1 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND delay = {delay}")
-    result2 = db.execute_query(f"SELECT correlation FROM dbo.tb_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND delay = {delay}")
+    result1 = db.execute_query(f"SELECT correlation FROM db_correlacao WHERE code1 = '{ind1}' AND code2 = '{ind2}' AND delay = {delay}")
+    result2 = db.execute_query(f"SELECT correlation FROM db_correlacao WHERE code1 = '{ind2}' AND code2 = '{ind1}' AND delay = {delay}")
 
     if result1:
       correlacao = float(result1[0][0])
@@ -23,7 +22,7 @@ def correlacao_numero(ind1, ind2, delay, db):
 
 
 def graficos(ind1, ind2, delay):
-  series = pd.read_csv("tcc_app/static/tcc_app/csv/9-filtro_serie_mensal_completa.csv")
+  series = pd.read_csv("tcc_app/static/tcc_app/csv/serie_mensal_completa.csv")
 
   if ind1 != None and ind2 != None:
     df1 = series.query("CODE == @ind1").reset_index()
@@ -149,13 +148,13 @@ def correlacoes(ind1, ind2, db):
     table1 = pd.DataFrame(columns=['codigo', 'delay', 'correlacao'])
     table2 = pd.DataFrame(columns=['codigo', 'delay', 'correlacao'])
 
-    df1asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC")
-    df1desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC")
+    df1asc = db.execute_query(f"SELECT correlation, code1, code2, delay FROM db_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation ASC LIMIT 10")
+    df1desc = db.execute_query(f"SELECT correlation, code1, code2, delay FROM db_correlacao WHERE code1 = '{ind1}' or code2 = '{ind1}' ORDER BY correlation DESC LIMIT 10")
 
     df1 = df1asc + df1desc
 
-    df2asc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation ASC")
-    df2desc = db.execute_query(f"SELECT TOP 10 correlation, code1, code2, delay FROM dbo.tb_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation DESC")
+    df2asc = db.execute_query(f"SELECT correlation, code1, code2, delay FROM db_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation ASC LIMIT 10")
+    df2desc = db.execute_query(f"SELECT correlation, code1, code2, delay FROM db_correlacao WHERE code1 = '{ind2}' or code2 = '{ind2}' ORDER BY correlation DESC LIMIT 10")
 
     df2 = df2asc + df2desc
   

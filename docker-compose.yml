@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  rede:
+    driver: bridge
+
+services:
+  db:
+    image: postgres:15
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: aplicacao_tcc
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - '5434:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    networks:
+      - rede
+
+  web:
+    build: .
+    container_name: django_app
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/app
+    networks:
+      - rede
+
+volumes:
+  postgres_data:
